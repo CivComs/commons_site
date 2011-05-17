@@ -1,0 +1,15 @@
+*.py[co]
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+bin
+lib
+include
+develop-eggs
+src
+commons/temp.db
+.installed.cfg
