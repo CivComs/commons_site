@@ -1,9 +1,17 @@
 <!doctype html>
 <html>
     <head>
-        <title>{{ message }}</title>
+        <title>Yo</title>
     </head>
     <body>
-        <h1>{{ message }}</h1>
+{% if latest_app_list %}
+    <ul>
+    {% for app in latest_app_list %}
+        <li><a href="/apps/{{ app.id }}/">{{ app.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No apps are available.</p>
+{% endif %}
     </body>
 </html>
