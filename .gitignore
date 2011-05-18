@@ -11,5 +11,5 @@ lib
 include
 develop-eggs
 src
-commons/temp.db
+commons_project/temp.db
 .installed.cfg

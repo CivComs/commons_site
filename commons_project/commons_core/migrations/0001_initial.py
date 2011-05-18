@@ -9,59 +9,59 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         
         # Adding model 'App'
-        db.create_table('commons_app', (
+        db.create_table('commons_core_app', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.TextField')()),
         ))
-        db.send_create_signal('commons', ['App'])
+        db.send_create_signal('commons_core', ['App'])
 
         # Adding model 'Jurisdiction'
-        db.create_table('commons_jurisdiction', (
+        db.create_table('commons_core_jurisdiction', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.TextField')()),
         ))
-        db.send_create_signal('commons', ['Jurisdiction'])
+        db.send_create_signal('commons_core', ['Jurisdiction'])
 
         # Adding model 'Deployment'
-        db.create_table('commons_deployment', (
+        db.create_table('commons_core_deployment', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.TextField')()),
-            ('jurisdiction', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['commons.Jurisdiction'])),
-            ('app', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['commons.App'])),
+            ('jurisdiction', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['commons_core.Jurisdiction'])),
+            ('app', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['commons_core.App'])),
         ))
-        db.send_create_signal('commons', ['Deployment'])
+        db.send_create_signal('commons_core', ['Deployment'])
 
 
     def backwards(self, orm):
         
         # Deleting model 'App'
-        db.delete_table('commons_app')
+        db.delete_table('commons_core_app')
 
         # Deleting model 'Jurisdiction'
-        db.delete_table('commons_jurisdiction')
+        db.delete_table('commons_core_jurisdiction')
 
         # Deleting model 'Deployment'
-        db.delete_table('commons_deployment')
+        db.delete_table('commons_core_deployment')
 
 
     models = {
-        'commons.app': {
+        'commons_core.app': {
             'Meta': {'object_name': 'App'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.TextField', [], {})
         },
-        'commons.deployment': {
+        'commons_core.deployment': {
             'Meta': {'object_name': 'Deployment'},
-            'app': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['commons.App']"}),
+            'app': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['commons_core.App']"}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'jurisdiction': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['commons.Jurisdiction']"}),
+            'jurisdiction': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['commons_core.Jurisdiction']"}),
             'name': ('django.db.models.fields.TextField', [], {})
         },
-        'commons.jurisdiction': {
+        'commons_core.jurisdiction': {
             'Meta': {'object_name': 'Jurisdiction'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.TextField', [], {})
         }
     }
 
-    complete_apps = ['commons']
+    complete_apps = ['commons_core']
