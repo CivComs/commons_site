@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.template import Context, loader
-from commons.models import App
+from commons_core.models import App
 
 def index(request):
     latest_app_list = App.objects.all
