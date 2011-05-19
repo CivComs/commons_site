@@ -4,9 +4,9 @@ Installation
 Prerequisites
 -------------
 
-    Setuptools (allows you to easy_install) - http://pypi.python.org/pypi/setuptools
-    Virtualenv - easy_install virtualenv - http://pypi.python.org/pypi/virtualenv
-    Python 2.6
+* Setuptools (allows you to easy_install) - http://pypi.python.org/pypi/setuptools
+* Virtualenv - easy_install virtualenv - http://pypi.python.org/pypi/virtualenv
+* Python 2.6 or 2.7 - http://python.org/download/
 
 Here is how to pull and build a local copy of the system::
     
