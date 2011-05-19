@@ -124,6 +124,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'commons_core',
     'south',
+    'django_pipes',
 )
 
 # A sample logging configuration. The only tangible logging

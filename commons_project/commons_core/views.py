@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.template import Context, loader
 from commons_core.models import App
+from commons_core.models import *
 
 def index(request):
     latest_app_list = App.objects.all
@@ -12,5 +13,12 @@ def index(request):
     return HttpResponse(t.render(c))
 
 
+
+#def detail(request, app_id):
+#    return HttpResponse("You're looking at app %s." % app_id)
+
 def detail(request, app_id):
-    return HttpResponse("You're looking at app %s." % app_id)
+    n = App.objects.get(pk=app_id)
+    q = request.GET.get('q', n.name)
+    results = GoogleSearch.fetch(q)
+    return render_to_response("detail.html", {'results':results,'q':q})
