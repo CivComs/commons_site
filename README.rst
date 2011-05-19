@@ -4,9 +4,9 @@ Installation
 Prerequisites
 -------------
 
-    Setuptools (allows you to easy_install) - http://pypi.python.org/pypi/setuptools
-    Virtualenv - easy_install virtualenv - http://pypi.python.org/pypi/virtualenv
-    Python 2.6
+* Setuptools (allows you to easy_install) - http://pypi.python.org/pypi/setuptools
+* Virtualenv - easy_install virtualenv - http://pypi.python.org/pypi/virtualenv
+* Python 2.6 or 2.7 - http://python.org/download/
 
 Here is how to pull and build a local copy of the system::
     
@@ -17,8 +17,7 @@ Here is how to pull and build a local copy of the system::
     cd commons_project
     pip install --requirement requirements.txt
     ./manage.py syncdb
-    ./manage.py schemamigration commons_core --initial
-    ./manage.py migrate commons_core --fake
+    ./manage.py migrate commons_core
     
 Here is how to deploy to ep.io for the first time::
     
