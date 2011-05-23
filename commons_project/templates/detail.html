@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <title>Detail Page of {{ q }}</title>
+</head>
+<body>
+    <h1>About the {{ q }}:</h1>
+    <h2>Jurisdictions which have deployed:</h2>
+    <ul>
+        {% for jx in jxs %}
+        <li>{{ jx.jurisdiction }}</a></li>
+        {% endfor %}
+    </ul>
+    <h2>Google Search results for {{ q }}:</h2>
+    <ul>
+        {% for result in results %}
+        <li><a href="{{ result.unescapedUrl }}" target="newpage">{{ result.title|safe }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

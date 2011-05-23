@@ -20,5 +20,6 @@ def index(request):
 def detail(request, app_id):
     n = App.objects.get(pk=app_id)
     q = request.GET.get('q', n.name)
+    jxs = Deployment.objects.filter(app=app_id)
     results = GoogleSearch.fetch(q)
-    return render_to_response("detail.html", {'results':results,'q':q})
+    return render_to_response("detail.html", {'results':results,'q':q, 'jxs':jxs})
