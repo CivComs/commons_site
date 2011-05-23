@@ -3,14 +3,14 @@ import django_pipes
 
 class App(models.Model):
     name = models.TextField()
-    #ss_app_id = models.IntegerField()
+    ssid = models.IntegerField(default=0)
     
     def __unicode__(self):
         return self.name
 
 class Jurisdiction(models.Model):
     name = models.TextField()
-    #ss_jx_id = models.IntegerField()
+    ssid = models.IntegerField(default=0)
 
     def __unicode__(self):
         return self.name
