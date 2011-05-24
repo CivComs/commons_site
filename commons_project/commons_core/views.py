@@ -23,3 +23,14 @@ def detail(request, app_id):
     jxs = Deployment.objects.filter(app=app_id)
     results = GoogleSearch.fetch(q)
     return render_to_response("detail.html", {'results':results,'app':n, 'jurisdictions':jxs})
+
+# Jurisdictions
+
+def j_index(request):
+    j = Jurisdiction.objects.all()
+    return render_to_response('templates/j_index.html', {'jurisdiction_list': j},
+                             context_instance=RequestContext(request))
+
+def j_detail(request, j_id):
+    j = Jurisdiction.objects.get(pk=j_id)
+    return render_to_response("templates/j_detail.html", {'jurisdiction':j,})
