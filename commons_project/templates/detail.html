@@ -1,17 +1,18 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-    <title>Detail Page of {{ q }}</title>
+    <title>Detail Page of {{ app.name }}</title>
 </head>
 <body>
-    <h1>About the {{ q }}:</h1>
+    <h1>About the {{ app.name }}:</h1>
+    <h3>{{app.description}}</h3>
     <h2>Jurisdictions which have deployed:</h2>
     <ul>
-        {% for jx in jxs %}
+        {% for jx in jurisdictions %}
         <li>{{ jx.jurisdiction }}</a></li>
         {% endfor %}
     </ul>
-    <h2>Google Search results for {{ q }}:</h2>
+    <h2>Google Search results for {{ app.name }}:</h2>
     <ul>
         {% for result in results %}
         <li><a href="{{ result.unescapedUrl }}" target="newpage">{{ result.title|safe }}</a></li>
