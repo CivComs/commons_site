@@ -13,6 +13,14 @@ def index(request):
     return HttpResponse(t.render(c))
 
 
+def appindex(request):
+    app_list = App.objects.all
+    t = loader.get_template('appindex.html')
+    c = RequestContext(request, {
+        'app_list': app_list,
+    })
+    return HttpResponse(t.render(c))
+    
 
 #def detail(request, app_id):
 #    return HttpResponse("You're looking at app %s." % app_id)
@@ -22,4 +30,4 @@ def detail(request, app_id):
     q = request.GET.get('q', n.name)
     jxs = Deployment.objects.filter(app=app_id)
     results = GoogleSearch.fetch(q)
-    return render_to_response("detail.html", {'results':results,'app':n, 'jurisdictions':jxs})
+    return render_to_response("detail.html", {'results':results,'app':n, 'jurisdictions':jxs}, context_instance=RequestContext(request))
