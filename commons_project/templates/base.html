@@ -4,10 +4,12 @@
         <meta charset=utf-8 />
         <title>{% block title %}{% endblock %}</title> 
         <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" type="text/css" />
+        <!-- IMPORTANT Remember to update the files, run : -->
+        <!--  ./manage.py collectstatic  -->
     </head>
     <body>
         <header>
-            <h1>Site title etc.</h1>
+            <h1>Civic Commons App Catalog</h1>
             <nav>
                 <h2>Main navigation</h2>
                 <ul>
@@ -15,7 +17,7 @@
                 </ul>
             </nav>
         </header>
-        <section id="wrapper">i
+        <section id="wrapper">
         {% block content %}{% endblock %}
         </section>
     </body>
