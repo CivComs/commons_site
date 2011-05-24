@@ -10,5 +10,7 @@ urlpatterns = patterns('',
     (r'^$', "commons_core.views.index"),
     (r'^apps/$', 'commons_core.views.appindex'),
     (r'^apps/(?P<app_id>\d+)/$', 'commons_core.views.detail'),
+    (r'^dep/$', 'commons_core.views.depindex'),
+    (r'^dep/(?P<dep_id>\d+)/$', 'commons_core.views.depdetail'),
     url(r'^admin/', include(admin.site.urls)),
 )

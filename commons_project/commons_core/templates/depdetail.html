@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Detail of {{ dep.name}}{% endblock %}
+
+{% block content %}
+    <h1>About the {{ dep.name }}:</h1>
+    <h3>{{dep.description}}</h3>
+    <h2>This deployment was for: {{dep.app}} Application</h2>
+    <h2>It was deployed in the following jurisdiction: {{ dep.jurisdiction }}</h2>
+    </ul>
+{% endblock %}

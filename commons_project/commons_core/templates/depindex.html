@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{%block title%}Civic Commons App Catalog{%endblock%}
+
+{% block content %}
+        <h1>Deployments List. Please choose one of the deployments below:</h1>
+{% if dep_list %}
+    <ul>
+    {% for dep in dep_list %}
+        <li><a href="{{ dep.id }}/">{{ dep.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No deployments are available.</p>
+{% endif %}
+{% endblock %}

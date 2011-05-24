@@ -1,7 +1,6 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.template import Context, RequestContext, loader
-from commons_core.models import App
 from commons_core.models import *
 
 def index(request):
@@ -20,7 +19,19 @@ def appindex(request):
         'app_list': app_list,
     })
     return HttpResponse(t.render(c))
-    
+
+def depindex(request):
+    dep_list = Deployment.objects.all
+    t = loader.get_template('depindex.html')
+    c = RequestContext(request, {
+        'dep_list': dep_list,
+    })
+    return HttpResponse(t.render(c))
+
+def depdetail(request, dep_id):
+    n = Deployment.objects.get(pk=dep_id)
+    return render_to_response("depdetail.html", {'dep':n }, context_instance=RequestContext(request))
+   
 
 #def detail(request, app_id):
 #    return HttpResponse("You're looking at app %s." % app_id)
