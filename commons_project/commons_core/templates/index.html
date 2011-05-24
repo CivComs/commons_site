@@ -1,10 +1,8 @@
-<!doctype html>
-<html>
-    <head>
-        <link rel="shortcut icon" href="http://civiccommons.org/wp-content/uploads/2010/09/fav1.png"/>
-        <title>Civic Commons App Catalog</title>
-    </head>
-    <body>
+{% extends "base.html" %}
+
+{%block title%}Civic Commons App Catalog{%endblock%}
+
+{% block content %}
         <h1>Welcome to the Civic Commons App Catalog. Please choose one of the applications below:</h1>
 {% if latest_app_list %}
     <ul>
@@ -15,5 +13,4 @@
 {% else %}
     <p>No apps are available.</p>
 {% endif %}
-    </body>
-</html>
+{% endblock %}

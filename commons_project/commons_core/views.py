@@ -1,13 +1,13 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
-from django.template import Context, loader
+from django.template import Context, RequestContext, loader
 from commons_core.models import App
 from commons_core.models import *
 
 def index(request):
     latest_app_list = App.objects.all
     t = loader.get_template('index.html')
-    c = Context({
+    c = RequestContext(request, {
         'latest_app_list': latest_app_list,
     })
     return HttpResponse(t.render(c))

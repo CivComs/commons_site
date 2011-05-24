@@ -11,5 +11,7 @@ lib
 include
 develop-eggs
 src
-commons_project/temp.db
+*.db
+static_root/
+commons_project/pip-log.txt
 .installed.cfg
