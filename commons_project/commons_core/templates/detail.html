@@ -7,7 +7,7 @@
     <h2>Jurisdictions which have deployed:</h2>
     <ul>
         {% for jx in jurisdictions %}
-        <li>{{ jx.jurisdiction }}</a></li>
+        <li><a href="/j/{{jx.id}}">{{ jx.jurisdiction }}</a></li>
         {% endfor %}
     </ul>
     <h2>Google Search results for {{ app.name }}:</h2>

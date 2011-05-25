@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 
-{%block title%}All Jurisdictions{%endblock%}
+{% block title %}All Jurisdictions{% endblock %}
 
 {% block content %}
+        <h1>Jurisdictions</h1>
 {% if jurisdiction_list %}
 <ul>
-    {% for j in jurisdiction_list}
+    {% for j in jurisdiction_list %}
     <li><a href="/j/{{ j.id }}">{{ j.name }}</a></li>
     {% endfor %}
 </ul>
 {% else %}
-<p>No Jurisdictions Yet</p>i
+<p>No Jurisdictions Yet</p>
 {% endif %}
 {% endblock %}

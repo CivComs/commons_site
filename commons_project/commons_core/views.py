@@ -47,11 +47,11 @@ def detail(request, app_id):
 
 def j_index(request):
     j = Jurisdiction.objects.all()
-    return render_to_response('templates/j_index.html', {'jurisdiction_list': j},
+    return render_to_response('j_index.html', {'jurisdiction_list': j},
                              context_instance=RequestContext(request))
 
 def j_detail(request, j_id):
     j = Jurisdiction.objects.get(pk=j_id)
-    return render_to_response("templates/j_detail.html",
+    return render_to_response("j_detail.html",
                               {'jurisdiction':j,},
                               context_instance=RequestContext(request))
