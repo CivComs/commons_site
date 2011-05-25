@@ -1,4 +1,10 @@
-body {
+html {
     background-color: #E1CFAC;
-    margin: 1em;
+}
+
+body {
+    background-color: #FFF;
+    margin: 2em;
+    padding: 2em;
+    border: 1px solid #CAB39A
     }
