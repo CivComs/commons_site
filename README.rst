@@ -28,8 +28,9 @@ Here is how to deploy to ep.io for the first time::
 Here is how to add a superuser on ep.io::
     
     epio django createsuperuser
-
+    
 If you've made changes to a static file (javascript, css, images, etc), you'll also need to::
+    
     ./manage.py collectstatic
-
+    
 This should happen *before* the epio upload
