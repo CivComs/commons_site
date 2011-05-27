@@ -1,25 +1,40 @@
 from django.db import models
 import django_pipes
-#defines the data models for the application
-#for anything that we need to store data about.
 
 class App(models.Model):
+    """Describes an application or product."""
     name = models.TextField()
-# Must use name of model instead of model itself since SSProduct has not been defined yet
-    ssid = models.ForeignKey('SSProduct')
+    # Must use name of model instead of model itself since
+    # SSProduct has not been defined yet.
+    ssid = models.ForeignKey('SSProduct', blank=True, null=True)
     description = models.TextField()
+    dependencies = models.ManyToManyField("self", through='Dependency',
+                                          symmetrical=False,
+                                          related_name='dependents')
     
     def __unicode__(self):
         return self.name
 
+class Dependency(models.Model):
+    """Describes a dependency relationship between two products"""
+    from_app = models.ForeignKey(App, related_name='from_apps')
+    to_app = models.ForeignKey(App, related_name='to_apps')
+    type = models.ForeignKey('DependencyType', blank=True, null=True)
+
 class Jurisdiction(models.Model):
+    """A jurisdiction, such as a city, county, state, or 
+    perhaps more specifically a department."""
     name = models.TextField()
-    ssid = models.ForeignKey('SSOrganization')
+    ssid = models.ForeignKey('SSOrganization', blank=True, null=True)
     description = models.TextField()
+    parent = models.ForeignKey('self', related_name='children', blank=True,
+                               null=True, on_delete=models.SET_NULL)
     def __unicode__(self):
         return self.name
 
 class Deployment(models.Model):
+    """A deployment of an app at a jurisdiction, for example 
+    EAS at San Francisco."""
     name = models.TextField()
     description = models.TextField()
     jurisdiction = models.ForeignKey(Jurisdiction)
@@ -28,8 +43,8 @@ class Deployment(models.Model):
     def __unicode__(self):
         return self.name
     
-# Begin Def of Short Stack models here:
 class SSOrganization(models.Model):
+    """An organization in Shortstack."""
     ssid = models.IntegerField(default=0, unique=True)
     name = models.TextField(default="")
     ORG_CHOICES = (
@@ -63,6 +78,7 @@ class SSOrganization(models.Model):
         
 
 class SSProduct(models.Model):
+    """A product in Shortstack."""
     ssid = models.IntegerField(default=0, unique=True)
     name = models.TextField(default="")
 
@@ -78,11 +94,14 @@ class SSDependency(models.Model):
     type = models.ForeignKey('DependencyType', to_field = 'name')
 
 class DependencyType(models.Model):
-    name = models.TextField(default="", unique=True)
+    name = models.CharField(max_length=30, default="", unique=True)
+    def __unicode__(self):
+        return self.name
 
-# need to find out how SS is currently storing "used_by" data when it comes time to write the
-# API for inserting data into ShortStack. Currently, we have a deployment object but
-# maybe in SS this is kept track of via a one to many relationship between products and organizations..
+# TODO: need to find out how SS is currently storing "used_by" data when it
+# comes time to write the API for inserting data into ShortStack. Currently
+# we have a deployment object but maybe in SS this is kept track of via a
+# one to many relationship between products and organizations..
 
 # example snippet of accessing data from an API
 class GoogleSearch(django_pipes.Pipe):
