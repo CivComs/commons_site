@@ -1,5 +1,7 @@
 from django.db import models
 import django_pipes
+from userena.models import UserenaBaseProfile
+
 #defines the data models for the application
 #for anything that we need to store data about.
 
@@ -26,6 +28,9 @@ class Deployment(models.Model):
 
     def __unicode__(self):
         return self.name
+
+class CCProfile(UserenaBaseProfile):
+    pass
 
 # Create your models here.
 class GoogleSearch(django_pipes.Pipe):
