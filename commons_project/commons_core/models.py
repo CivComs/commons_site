@@ -6,7 +6,7 @@ class App(models.Model):
     name = models.TextField()
     # Must use name of model instead of model itself since
     # SSProduct has not been defined yet.
-    ssid = models.ForeignKey('SSProduct', blank=True, null=True)
+    ssp = models.ForeignKey('SSProduct', blank=True, null=True)
     description = models.TextField()
     dependencies = models.ManyToManyField("self", through='Dependency',
                                           symmetrical=False,
@@ -25,7 +25,7 @@ class Jurisdiction(models.Model):
     """A jurisdiction, such as a city, county, state, or 
     perhaps more specifically a department."""
     name = models.TextField()
-    ssid = models.ForeignKey('SSOrganization', blank=True, null=True)
+    sso = models.ForeignKey('SSOrganization', blank=True, null=True)
     description = models.TextField()
     parent = models.ForeignKey('self', related_name='children', blank=True,
                                null=True, on_delete=models.SET_NULL)
@@ -45,7 +45,7 @@ class Deployment(models.Model):
     
 class SSOrganization(models.Model):
     """An organization in Shortstack."""
-    ssid = models.IntegerField(default=0, unique=True)
+    ssid = models.IntegerField(primary_key=True)
     name = models.TextField(default="")
     ORG_CHOICES = (
         ("4", "City"),
@@ -79,19 +79,19 @@ class SSOrganization(models.Model):
 
 class SSProduct(models.Model):
     """A product in Shortstack."""
-    ssid = models.IntegerField(default=0, unique=True)
+    ssid = models.IntegerField(primary_key=True)
     name = models.TextField(default="")
 
 
 class SSBudget(models.Model):
-    orgid = models.ForeignKey(SSOrganization, to_field = 'ssid')
+    orgid = models.ForeignKey(SSOrganization)
     year = models.IntegerField(default=0)
     amount = models.IntegerField(default=0)
     
 class SSDependency(models.Model):
-    prodid = models.ForeignKey(SSProduct, to_field = 'ssid')
+    prodid = models.ForeignKey(SSProduct)
     dependencyid = models.IntegerField(default=0)
-    type = models.ForeignKey('DependencyType', to_field = 'name')
+    type = models.ForeignKey('DependencyType')
 
 class DependencyType(models.Model):
     name = models.CharField(max_length=30, default="", unique=True)

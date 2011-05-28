@@ -10,16 +10,24 @@ class Migration(SchemaMigration):
         
         # Adding model 'SSProduct'
         db.create_table('commons_core_ssproduct', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('ssid', self.gf('django.db.models.fields.IntegerField')(default=0, unique=True)),
+            ('ssid', self.gf('django.db.models.fields.IntegerField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.TextField')(default='')),
         ))
         db.send_create_signal('commons_core', ['SSProduct'])
 
+        # Adding model 'Dependency'
+        db.create_table('commons_core_dependency', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('from_app', self.gf('django.db.models.fields.related.ForeignKey')(related_name='from_apps', to=orm['commons_core.App'])),
+            ('to_app', self.gf('django.db.models.fields.related.ForeignKey')(related_name='to_apps', to=orm['commons_core.App'])),
+            ('type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['commons_core.DependencyType'], null=True, blank=True)),
+        ))
+        db.send_create_signal('commons_core', ['Dependency'])
+
         # Adding model 'SSBudget'
         db.create_table('commons_core_ssbudget', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('orgid', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['commons_core.SSOrganization'], to_field='ssid')),
+            ('orgid', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['commons_core.SSOrganization'])),
             ('year', self.gf('django.db.models.fields.IntegerField')(default=0)),
             ('amount', self.gf('django.db.models.fields.IntegerField')(default=0)),
         ))
@@ -28,16 +36,15 @@ class Migration(SchemaMigration):
         # Adding model 'SSDependency'
         db.create_table('commons_core_ssdependency', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('prodid', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['commons_core.SSProduct'], to_field='ssid')),
+            ('prodid', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['commons_core.SSProduct'])),
             ('dependencyid', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['commons_core.DependencyType'], to_field='name')),
+            ('type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['commons_core.DependencyType'])),
         ))
         db.send_create_signal('commons_core', ['SSDependency'])
 
         # Adding model 'SSOrganization'
         db.create_table('commons_core_ssorganization', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('ssid', self.gf('django.db.models.fields.IntegerField')(default=0, unique=True)),
+            ('ssid', self.gf('django.db.models.fields.IntegerField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.TextField')(default='')),
             ('type', self.gf('django.db.models.fields.CharField')(max_length=20)),
             ('parentid', self.gf('django.db.models.fields.TextField')(default='')),
@@ -54,37 +61,33 @@ class Migration(SchemaMigration):
         # Adding model 'DependencyType'
         db.create_table('commons_core_dependencytype', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.TextField')(default='', unique=True)),
+            ('name', self.gf('django.db.models.fields.CharField')(default='', unique=True, max_length=30)),
         ))
         db.send_create_signal('commons_core', ['DependencyType'])
 
-        # Renaming column for 'App.ssid' to match new field type.
-        db.rename_column('commons_core_app', 'ssid', 'ssid_id')
-        # Changing field 'App.ssid'
-        db.alter_column('commons_core_app', 'ssid_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['commons_core.SSProduct']))
+        # Deleting field 'App.ssid'
+        db.delete_column('commons_core_app', 'ssid')
 
-        # Adding index on 'App', fields ['ssid']
-        db.create_index('commons_core_app', ['ssid_id'])
+        # Adding field 'App.ssp'
+        db.add_column('commons_core_app', 'ssp', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['commons_core.SSProduct'], null=True, blank=True), keep_default=False)
 
-        # Renaming column for 'Jurisdiction.ssid' to match new field type.
-        db.rename_column('commons_core_jurisdiction', 'ssid', 'ssid_id')
-        # Changing field 'Jurisdiction.ssid'
-        db.alter_column('commons_core_jurisdiction', 'ssid_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['commons_core.SSOrganization']))
+        # Deleting field 'Jurisdiction.ssid'
+        db.delete_column('commons_core_jurisdiction', 'ssid')
 
-        # Adding index on 'Jurisdiction', fields ['ssid']
-        db.create_index('commons_core_jurisdiction', ['ssid_id'])
+        # Adding field 'Jurisdiction.sso'
+        db.add_column('commons_core_jurisdiction', 'sso', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['commons_core.SSOrganization'], null=True, blank=True), keep_default=False)
+
+        # Adding field 'Jurisdiction.parent'
+        db.add_column('commons_core_jurisdiction', 'parent', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='children', null=True, to=orm['commons_core.Jurisdiction']), keep_default=False)
 
 
     def backwards(self, orm):
         
-        # Removing index on 'Jurisdiction', fields ['ssid']
-        db.delete_index('commons_core_jurisdiction', ['ssid_id'])
-
-        # Removing index on 'App', fields ['ssid']
-        db.delete_index('commons_core_app', ['ssid_id'])
-
         # Deleting model 'SSProduct'
         db.delete_table('commons_core_ssproduct')
+
+        # Deleting model 'Dependency'
+        db.delete_table('commons_core_dependency')
 
         # Deleting model 'SSBudget'
         db.delete_table('commons_core_ssbudget')
@@ -98,29 +101,42 @@ class Migration(SchemaMigration):
         # Deleting model 'DependencyType'
         db.delete_table('commons_core_dependencytype')
 
-        # Renaming column for 'App.ssid' to match new field type.
-        db.rename_column('commons_core_app', 'ssid_id', 'ssid')
-        # Changing field 'App.ssid'
-        db.alter_column('commons_core_app', 'ssid', self.gf('django.db.models.fields.IntegerField')())
+        # Adding field 'App.ssid'
+        db.add_column('commons_core_app', 'ssid', self.gf('django.db.models.fields.IntegerField')(default=0), keep_default=False)
 
-        # Renaming column for 'Jurisdiction.ssid' to match new field type.
-        db.rename_column('commons_core_jurisdiction', 'ssid_id', 'ssid')
-        # Changing field 'Jurisdiction.ssid'
-        db.alter_column('commons_core_jurisdiction', 'ssid', self.gf('django.db.models.fields.IntegerField')())
+        # Deleting field 'App.ssp'
+        db.delete_column('commons_core_app', 'ssp_id')
+
+        # Adding field 'Jurisdiction.ssid'
+        db.add_column('commons_core_jurisdiction', 'ssid', self.gf('django.db.models.fields.IntegerField')(default=0), keep_default=False)
+
+        # Deleting field 'Jurisdiction.sso'
+        db.delete_column('commons_core_jurisdiction', 'sso_id')
+
+        # Deleting field 'Jurisdiction.parent'
+        db.delete_column('commons_core_jurisdiction', 'parent_id')
 
 
     models = {
         'commons_core.app': {
             'Meta': {'object_name': 'App'},
+            'dependencies': ('django.db.models.fields.related.ManyToManyField', [], {'related_name': "'dependents'", 'symmetrical': 'False', 'through': "orm['commons_core.Dependency']", 'to': "orm['commons_core.App']"}),
             'description': ('django.db.models.fields.TextField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.TextField', [], {}),
-            'ssid': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['commons_core.SSProduct']"})
+            'ssp': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['commons_core.SSProduct']", 'null': 'True', 'blank': 'True'})
+        },
+        'commons_core.dependency': {
+            'Meta': {'object_name': 'Dependency'},
+            'from_app': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'from_apps'", 'to': "orm['commons_core.App']"}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'to_app': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'to_apps'", 'to': "orm['commons_core.App']"}),
+            'type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['commons_core.DependencyType']", 'null': 'True', 'blank': 'True'})
         },
         'commons_core.dependencytype': {
             'Meta': {'object_name': 'DependencyType'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.TextField', [], {'default': "''", 'unique': 'True'})
+            'name': ('django.db.models.fields.CharField', [], {'default': "''", 'unique': 'True', 'max_length': '30'})
         },
         'commons_core.deployment': {
             'Meta': {'object_name': 'Deployment'},
@@ -135,21 +151,22 @@ class Migration(SchemaMigration):
             'description': ('django.db.models.fields.TextField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.TextField', [], {}),
-            'ssid': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['commons_core.SSOrganization']"})
+            'parent': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'children'", 'null': 'True', 'to': "orm['commons_core.Jurisdiction']"}),
+            'sso': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['commons_core.SSOrganization']", 'null': 'True', 'blank': 'True'})
         },
         'commons_core.ssbudget': {
             'Meta': {'object_name': 'SSBudget'},
             'amount': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'orgid': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['commons_core.SSOrganization']", 'to_field': "'ssid'"}),
+            'orgid': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['commons_core.SSOrganization']"}),
             'year': ('django.db.models.fields.IntegerField', [], {'default': '0'})
         },
         'commons_core.ssdependency': {
             'Meta': {'object_name': 'SSDependency'},
             'dependencyid': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'prodid': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['commons_core.SSProduct']", 'to_field': "'ssid'"}),
-            'type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['commons_core.DependencyType']", 'to_field': "'name'"})
+            'prodid': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['commons_core.SSProduct']"}),
+            'type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['commons_core.DependencyType']"})
         },
         'commons_core.ssorganization': {
             'Meta': {'object_name': 'SSOrganization'},
@@ -158,19 +175,17 @@ class Migration(SchemaMigration):
             'geolong': ('django.db.models.fields.DecimalField', [], {'default': '0', 'max_digits': '10', 'decimal_places': '4'}),
             'geoname': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             'govtype': ('django.db.models.fields.CharField', [], {'max_length': '1'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.TextField', [], {'default': "''"}),
             'parentid': ('django.db.models.fields.TextField', [], {'default': "''"}),
             'parentname': ('django.db.models.fields.TextField', [], {'default': "''"}),
             'population': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'ssid': ('django.db.models.fields.IntegerField', [], {'default': '0', 'unique': 'True'}),
+            'ssid': ('django.db.models.fields.IntegerField', [], {'primary_key': 'True'}),
             'type': ('django.db.models.fields.CharField', [], {'max_length': '20'})
         },
         'commons_core.ssproduct': {
             'Meta': {'object_name': 'SSProduct'},
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.TextField', [], {'default': "''"}),
-            'ssid': ('django.db.models.fields.IntegerField', [], {'default': '0', 'unique': 'True'})
+            'ssid': ('django.db.models.fields.IntegerField', [], {'primary_key': 'True'})
         }
     }
 
