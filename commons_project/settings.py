@@ -111,7 +111,25 @@ INSTALLED_APPS = (
     'commons_core',
     'south',
     'django_pipes',
+    'userena',
+    'guardian',
+    'easy_thumbnails',
 )
+
+AUTHENTICATION_BACKENDS = (
+    'userena.backends.UserenaAuthenticationBackend',
+    'guardian.backends.ObjectPermissionBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+AUTH_PROFILE_MODULE = 'commons_core.CCProfile'
+
+ANONYMOUS_USER_ID = -1
+
+LOGIN_REDIRECT_URL = '/users/%(username)s/'
+LOGIN_URL = '/users/signin/'
+LOGOUT_URL = '/users/signout/'
+USERENA_SIGNIN_REDIRECT_URL = '/users/%(username)s/'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

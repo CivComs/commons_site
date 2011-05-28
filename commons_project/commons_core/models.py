@@ -1,5 +1,9 @@
 from django.db import models
 import django_pipes
+from userena.models import UserenaBaseProfile
+
+#defines the data models for the application
+#for anything that we need to store data about.
 
 class App(models.Model):
     """Describes an application or product."""
@@ -98,12 +102,17 @@ class DependencyType(models.Model):
     def __unicode__(self):
         return self.name
 
+# The custom Civic Commons Profile object we are using for this site
+class CCProfile(UserenaBaseProfile):
+    pass
+
 # TODO: need to find out how SS is currently storing "used_by" data when it
 # comes time to write the API for inserting data into ShortStack. Currently
 # we have a deployment object but maybe in SS this is kept track of via a
 # one to many relationship between products and organizations..
 
 # example snippet of accessing data from an API
+
 class GoogleSearch(django_pipes.Pipe):
     uri = "http://ajax.googleapis.com/ajax/services/search/web"
 
