@@ -37,7 +37,7 @@ class Jurisdiction(models.Model):
         return self.name
 
 class Deployment(models.Model):
-    """A deployment of an app at a jurisdiction, for example 
+    """A deployment of an App at a Jurisdiction, for example 
     EAS at San Francisco."""
     name = models.TextField()
     description = models.TextField()
@@ -104,6 +104,7 @@ class DependencyType(models.Model):
 
 # The custom Civic Commons Profile object we are using for this site
 class CCProfile(UserenaBaseProfile):
+    """Doesn't do anything just yet"""
     pass
 
 # TODO: need to find out how SS is currently storing "used_by" data when it
