@@ -89,6 +89,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
@@ -115,7 +116,10 @@ INSTALLED_APPS = (
     'userena.contrib.umessages',
     'guardian',
     'easy_thumbnails',
+    'debug_toolbar',
 )
+
+INTERNAL_IPS = ('127.0.0.1',)
 
 AUTHENTICATION_BACKENDS = (
     'userena.backends.UserenaAuthenticationBackend',
