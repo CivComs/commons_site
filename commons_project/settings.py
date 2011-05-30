@@ -112,6 +112,7 @@ INSTALLED_APPS = (
     'south',
     'django_pipes',
     'userena',
+    'userena.contrib.umessages',
     'guardian',
     'easy_thumbnails',
 )

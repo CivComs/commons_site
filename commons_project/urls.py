@@ -16,4 +16,5 @@ urlpatterns = patterns('',
     (r'^dep/(?P<dep_id>\d+)/$', 'commons_core.views.depdetail'),
     (r'^admin/', include(admin.site.urls)),
     (r'^users/', include('userena.urls')),
+    (r'^messages/', include('userena.contrib.umessages.urls')),
 )
