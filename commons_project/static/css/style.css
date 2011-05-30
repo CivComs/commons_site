@@ -2,6 +2,7 @@ body {
     background-color: #F4EFDD;
     margin: 0px;
     font-family: 'Cabin','Gill Sans','Gill Sans MT','Helvetica Neue','Helvetica',Arial,sans-serif;
+    font-size: 62.5%;
 }
 
 #main {
@@ -16,25 +17,39 @@ body {
     -webkit-box-shadow: 0 0 3px #999;
     box-shadow: 0 0 3px #999;
     clear: both;
+    font-size: 1.5em;
     }
 
 header {
     background-color: #000;
-    height: 40px;
+    height: 4em;
     border-bottom: 1px solid white;
     color: white;
-    padding: 0 5px;
 }
 
 header a {
     color: white;
+    text-decoration: none;
 }
+
+header a:hover {
+    color: green;
+    text-decoration: underline;
+}
+
+
+header li {
+    font-size: 1.3em;
+    margin: 0.85em;
+    margin-left: 0em;
+}
+
 #logo {
-    margin: 0px;
+    margin: 0.7em;
     display: block;
     float: left;
-    font-size: 1em;
     color: white;
+    font-size: 1.5em;
 }
 
 #user {
@@ -61,6 +76,7 @@ nav ul li {
     float: none;
     list-style-type: none;
     padding: 0.5em;
+    font-size: 1.5em;
 }
 
 nav ul li a {
