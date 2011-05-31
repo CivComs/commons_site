@@ -1,24 +1,67 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
     <head>
         <meta charset=utf-8 />
         <title>{% block title %}{% endblock %}</title> 
+
+ <!--       <link rel="stylesheet" href="{{ STATIC_URL }}css/reset.css" type="text/css" /> -->
+        <script src="http://yui.yahooapis.com/3.3.0/build/yui/yui-min.js"   charset="utf-8"></script>
+ <!--        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css"> -->
+         <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssbase/base-context-min.css">
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssgrids/grids-min.css">
         <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" type="text/css" />
+        
+        <style type="text/css"> 
+        
+        </style> 
         <!-- IMPORTANT Remember to update the files, run : -->
         <!--  ./manage.py collectstatic  -->
+      
     </head>
-    <body>
-        <header>
-            <h1>Site title etc.</h1>
-            <nav>
-                <h2>Main navigation</h2>
-                <ul>
-                    <li><a href="/">Nav item</a></li>
-                </ul>
-            </nav>
+    <body class="yui3-g"> 
+   
+        <div class="yui3-u-1">
+        <header class="yui3-g">
+            
+            <div class="yui3-u-1-2">AppCatalog pre-alpha</div>
+            <div class="yui3-u-1-2"><div id="utility">log-in</div></div>
+            
+            <div class="yui3-u-1">
+                <div class="nav-bar">
+                    <ul class="yui3-g">
+                        <li class="yui3-u-1-12"><div class="nav-item"><a href="/">Home</a></div></li>
+                        <li class="yui3-u-1-12"><div class="nav-item"><a href="/">Apps</a></div></li>
+                        <li class="yui3-u-1-12"><div class="nav-item"><a href="/">Cities</a></div></li>
+                        <li class="yui3-u-1-12"><div class="nav-item"><a href="/">People</a></div></li>
+                        <li class="yui3-u-7-12"><div class="nav-item"><input type="search"/><input type="button" value="search"/></div></li>
+                    </ul>
+                </div>
+            </div>
         </header>
-        <section id="wrapper">i
+        </div>
+
+        <div class="yui3-g">
+        <div class="yui3-u-7-8">
+            <div id="breadcrumbs">home > </div>
+        </div>
+        <div class="yui3-u-1-8">
+            <div id="share">share this!</div>
+        </div>
+        </div>
+        <div class="yui3-g">
+        <section class="yui3-u-1" id="content-wrapper">
+
+
         {% block content %}{% endblock %}
+
         </section>
+        </div>
+        <div class="yui3-g footer">
+            <div class="yui3-u-1">
+                footer text
+            </div>
+        
+        </div>
+
     </body>
 </html>

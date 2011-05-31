@@ -3,11 +3,67 @@
 {%block title%}Civic Commons App Catalog{%endblock%}
 
 {% block content %}
-        <h1>Welcome to the Civic Commons App Catalog. Please choose one of the applications below:</h1>
+        <div class="yui3-g"><!-- grid for main content area -->
+            <div class="yui3-u-1">
+                <div id="top-alert"></div>
+            </div>
+        
+        <div class="yui3-u-1">
+        <h1>Welcome</h1>
+        </div>
+        <div class="yui3-g">
+        <div class="yui3-u-1">
+            <div class="yui3-g"><!-- grid for two top columns headings -->
+                <div class="yui3-u-1-2">
+                <div class="yui3-g">
+                    <div class="yui3-u-1-3">
+                    <h2 class="section-head">Spotlight</h2>
+                    </div>
+                </div>
+                </div>
+                <div class="yui3-u-1-2">
+                <div class="yui3-u-1-3">
+                <h2 class="section-head">Civic BoyHowdy!</h2>
+                </div> 
+             </div>
+            <div class="yui3-g"><!-- grid for two top columns content -->
+              <div class="yui3-u-1-2">
+                <div class="left-col yui3-g">
+                    <div class="yui3-u-1">  
+
+                      <div class="media-gallery-1col"></div>
+                      <p>this is explaining the app</p>
+                    </div>
+                </div>
+            </div>
+              <div class="yui3-u-1-2">
+                 <div class="right-col yui3-g">
+                   <div class="yui3-u-1">
+                    <p>The app catalog is the watering hole where those in the know share what's new with civic technology and the cities that rely on it. Go ahead and browse by <a href="">category</a>, or take a look at the <a href="">cities</a> to see a bird's eye view of who's using what, and what they're saying about it.</p>
+                </div>   
+            </div>
+        </div>
+            </div>
+            <div class="yui3-g"> <!-- grid for category head , may be uneeded -->
+                <div class="yui3-u-1-3">
+                     <h2 class="section-head">Browse by Category</h2>
+                </div>
+            </div>
+            <ul class="yui3-g strip"> <!-- grid for category browser -->
+            
+                <li class="yui3-u-1-6"><div class="strip-item"></div><img src="" />blargh</li>
+                <li class="yui3-u-1-6"><div class="strip-item"></div><img src="" />blargh</li>
+                <li class="yui3-u-1-6"><div class="strip-item"></div><img src="" />blargh</li>
+                <li class="yui3-u-1-6"><div class="strip-item"></div><img src="" />blargh</li>
+                <li class="yui3-u-1-6"><div class="strip-item"></div><img src="" />blargh</li>
+                <li class="yui3-u-1-6"><div class="strip-item"></div><img src="" />blargh</li>
+            
+            </ul>
+        
 {% if latest_app_list %}
-    <ul>
+    <ul class="yui3-g">
     {% for app in latest_app_list %}
-        <li><a href="/apps/{{ app.id }}/">{{ app.name }}</a></li>
+        <li class="yui3-u-1-6 applist"><a href="/apps/{{ app.id }}/">{{ app.name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
