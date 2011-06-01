@@ -59,10 +59,11 @@ header {
     height: 40px;
 }
 
-.applist {
+.app-list li {
 
-    display:inline-block;
+    display: list-item;
     list-style:none;
+    height: 3em;
 
 }
 
@@ -104,17 +105,17 @@ h2{
 
 }
 
-.strip {
+.category-strip {
     border: 1px solid black;   
     margin: 1em;
     height: 75px;
 
 }
-strip-item {
+.cat-strip-item {
     display: inline-block;
-     border: 1px solid black;   
+    border: 1px solid black;   
 }
-strip-item img {
+.cat-strip-item img {
     display:block;
 
 }
@@ -124,6 +125,10 @@ strip-item img {
     background-color: pink;
 
 }
+
+
+
+
 
 
 #djDebug{
