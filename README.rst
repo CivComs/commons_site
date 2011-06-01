@@ -37,4 +37,4 @@ If you've made changes to a static file (javascript, css, images, etc), you'll a
     
     ./manage.py collectstatic
     
-This should happen *before* the epio upload
+This should happen *before* the epio upload.
