@@ -3,3 +3,6 @@ epio
 South == 0.7.3
 django-pipes == 0.2
 Unipath
+-e git://github.com/CivComs/django-userena.git#egg=django-userena
+django-debug-toolbar == 0.8.5
+PIL==1.1.7

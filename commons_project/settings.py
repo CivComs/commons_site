@@ -89,6 +89,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
@@ -111,7 +112,29 @@ INSTALLED_APPS = (
     'commons_core',
     'south',
     'django_pipes',
+    'userena',
+    'userena.contrib.umessages',
+    'guardian',
+    'easy_thumbnails',
+    'debug_toolbar',
 )
+
+INTERNAL_IPS = ('127.0.0.1',)
+
+AUTHENTICATION_BACKENDS = (
+    'userena.backends.UserenaAuthenticationBackend',
+    'guardian.backends.ObjectPermissionBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+AUTH_PROFILE_MODULE = 'commons_core.CCProfile'
+
+ANONYMOUS_USER_ID = -1
+
+LOGIN_REDIRECT_URL = '/users/%(username)s/'
+LOGIN_URL = '/users/signin/'
+LOGOUT_URL = '/users/signout/'
+USERENA_SIGNIN_REDIRECT_URL = '/users/%(username)s/'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

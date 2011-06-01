@@ -126,7 +126,11 @@ strip-item img {
 }
 
 
+#djDebug{
+letter-spacing:0;
+word-spacing:0;
 
+}
 
 
 
@@ -142,5 +146,6 @@ strip-item img {
     text-align: center;
 
 }
+
 
 

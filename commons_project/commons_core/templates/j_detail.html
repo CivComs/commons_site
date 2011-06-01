@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{%block title%}Jurisdiction{%endblock%}
+
+{% block content %}
+<h1>{{ jurisdiction.name }}</h1>
+<p>{{ jurisdiction.description }}
+<h2>Applications deployed in {{jurisdiction.name}}</h2>
+{% for deployment in jurisdiction.deployment_set.all %}
+<p><a href="/dep/{{deployment.id}}/">{{deployment.name}}</a></p>
+{% endfor %}
+{% endblock %}

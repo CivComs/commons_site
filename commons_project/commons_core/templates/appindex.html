@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{%block title%}Civic Commons App Catalog{%endblock%}
+
+{% block content %}
+        <h1>Application Catalog List. Please choose one of the applications below:</h1>
+{% if app_list %}
+    <ul>
+    {% for app in app_list %}
+        <li><a href="{{ app.id }}/">{{ app.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No apps are available.</p>
+{% endif %}
+{% endblock %}

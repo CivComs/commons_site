@@ -1,0 +1,16 @@
+<header id="header" class="yui3-g">
+    <h1 id="logo" class="yui3-u-5-8"><a href="/">The Commons Project</a></h1>
+    <div class="yui3-3-8">
+    <ul id="user" class="yui3-g">
+            
+        {% if user.is_authenticated %}
+          <li class="yui3-u-1-3"><a href="{% url userena_umessages_list %}">Messages</span></a></li>
+          <li class="yui3-u-1-3"><a href="{% url userena_profile_detail user.username %}">{{ user.username }}</span></a></li>
+          <li class="yui3-u-1-3"><a href="{% url userena_signout %}"><span>Sign Out</span></a></li>
+          {% else %}
+          <li class="yui3-u-1-2"><a href="{% url userena_signup %}"><span>Join Today</span></a></li>
+          <li class="yui3-u-1-2"><a href="{% url userena_signin %}"><span>Sign In</span></a></li>
+          {% endif %}
+    </ul>
+    </div>
+</header>
