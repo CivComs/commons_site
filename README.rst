@@ -26,7 +26,7 @@ Activate the virtualenv::
 Pull all the package dependencies::
 
     cd commons_project
-    pip install --requirement requirements.txt
+    pip install --requirement=requirements.txt
 
 Initialize the local DB (locally we use sqlite). This will prompt you to create
 a superuser in the DB, so say 'yes'.::
