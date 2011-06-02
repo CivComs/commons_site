@@ -431,7 +431,15 @@ h2 a:visited {
      width: 3em;
     height: 3em;
 
-    
+}
+
+.jurisdictions { 
+    height:10em;
+
+}
+.jurisdictions ul {
+  /*     border: 1px solid #aaa; */
+    margin: 0em 0em 0em 3em;
 
 }
 

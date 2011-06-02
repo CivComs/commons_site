@@ -72,7 +72,7 @@
             
             <div class="yui3-g full-width"> <!-- grid for category head , may be uneeded -->
                 <div class="yui3-u-1-2">
-                     <h2 class="section-head"><img src="{{ STATIC_URL }}/img/wrench_orange.png" alt="wrench" />Technical & Deployment Information</h2>
+                     <h2 class="section-head"><!-- <img src="{{ STATIC_URL }}/img/wrench_orange.png" alt="wrench" />-->Technical & Deployment Information</h2> 
                       <p>no technical details available. <a href="#">add some</a></p>
                 </div>
             </div> <!-- end tech details  -->
@@ -95,7 +95,7 @@
             <div class="yui3-g"><!-- grid for bottom two columns content -->
                 <div class="yui3-u-1-2">
                     <div class="left-col yui3-g">
-                        <div class="yui3-u-1">
+                        <div class="yui3-u-1 jurisdictions">
                            <h3>Jurisdictions which have deployed:</h3>
                             <ul>
                                 {% for dep in app.deployment_set.all %}
