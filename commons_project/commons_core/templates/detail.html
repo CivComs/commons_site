@@ -2,9 +2,7 @@
 {% block title %}Detail of {{ app.name}}{% endblock %}
 
 {% block content %}
-<!--    ++++++++++++++++++++++++++++++++++++++++++++++++++++   -->
-
-
+    
   <div class="yui3-g"><!-- grid for main content area -->
             <div class="yui3-u-1">
                 <div id="top-alert">
@@ -27,7 +25,10 @@
                     <div class="yui3-u-1">  
 
                       <div class="media-gallery-1col"></div>
-                      <p>this is explaining the app</p>
+                    {% load thumbnail %}
+                    {% for img in app.screenshots.all %}
+                         <p>{% thumbnail img.image 250x250 %}</p>
+                    {% endfor %}
                     </div>
                 </div>
             </div><!-- left col content -->
@@ -162,17 +163,4 @@
     	});
     </script>
 
-
-
-
-
-
-
-<!--    ++++++++++++++++++++++++++++++++++++++++++++++++++++   -->
-
-
-        
-    
-    
-    
 {% endblock %}
