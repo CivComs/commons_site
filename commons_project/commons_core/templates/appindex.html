@@ -65,10 +65,10 @@
                                         <li class="listed-app-name"><!--<img title="app-icon" src="{{ STATIC_URL }}/img/cog.png"/>-->
                                         <h3><a href="/apps/{{ app.id }}/">{{ app.name }}</a></h3>
                                          
-                                         <!-- 
+                                          
                                          <div class="star-ratings">
                                              <div id="star-rating-{{ app.id }}"></div>
-                                         </div>  -->  
+                                         </div>  
                                         <a href="/apps/{{ app.id }}/comments"><img title="comments" src="{{ STATIC_URL }}/img/comments.png"/><span class="applink">read comments (12)</span></a>
                                         <a href="/apps/{{ app.id }}/comments"><img title="package" src="{{ STATIC_URL }}/img/package.png"/><span class="applink">see deployments (3)</span></a>
                                         </li>
@@ -89,6 +89,29 @@
 
 </div> <!-- end div for main content area -->
 
+    <script type="text/javascript">
+    	$(function() {
+    	    
+    	    
+    	    
+    	    {% if app_list %}
+    	         {% for app in app_list %}
+    	            $('#star-rating-{{ app.id }}').raty({
+                        path: "{{STATIC_URL}}/img/",
+                        start: Math.floor(Math.random()*3) +2
+                        });
+                 {% endfor %}
+             {% endif %}
+             
+              {% if user.is_authenticated %}
+    	         $('#top-alert').hide();
+    	     {% else %}
+        	     $('#top-alert').show('fast');
+    	     {% endif %}
+             
+             
+    	});
+    </script>
 
        
 {% endblock %}
