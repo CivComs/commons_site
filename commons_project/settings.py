@@ -118,8 +118,13 @@ INSTALLED_APPS = (
     'guardian',
     'easy_thumbnails',
     'debug_toolbar',
+    'filer',
+    'disqus',
 )
 
+
+DISQUS_API_KEY = 'cJoeym8VvDOaICU60l6vjx1q6bKlxnVr1JitmPckseULoKSBLOXEynwPhM790Eab'
+DISQUS_WEBSITE_SHORTNAME = 'civiccommonsappcatalog'
 INTERNAL_IPS = ('127.0.0.1',)
 
 AUTHENTICATION_BACKENDS = (
