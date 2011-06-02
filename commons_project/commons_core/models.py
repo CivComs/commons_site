@@ -1,6 +1,8 @@
 from django.db import models
 import django_pipes
+from filer.fields.image import FilerImageField
 from userena.models import UserenaBaseProfile
+from filer.fields.file import FilerFileField
 
 #defines the data models for the application
 #for anything that we need to store data about.
@@ -11,11 +13,12 @@ class App(models.Model):
     # Must use name of model instead of model itself since
     # SSProduct has not been defined yet.
     ssp = models.ForeignKey('SSProduct', blank=True, null=True)
+    screenshots = models.ManyToManyField('Screenshot', blank=True, null=True)
     description = models.TextField()
     dependencies = models.ManyToManyField("self", through='Dependency',
                                           symmetrical=False,
                                           related_name='dependents')
-    
+    features = models.ManyToManyField('Feature', blank=True, null=True)
     def __unicode__(self):
         return self.name
 
@@ -24,6 +27,14 @@ class Dependency(models.Model):
     from_app = models.ForeignKey(App, related_name='from_apps')
     to_app = models.ForeignKey(App, related_name='to_apps')
     type = models.ForeignKey('DependencyType', blank=True, null=True)
+    
+class Screenshot(models.Model):
+    """ Screenshots associated with Apps """
+    image = FilerImageField(null=True, blank=True)
+    
+class Feature(models.Model):
+    """ Features associated with an App """
+    feature = models.CharField(max_length=500)
 
 class Jurisdiction(models.Model):
     """A jurisdiction, such as a city, county, state, or 
