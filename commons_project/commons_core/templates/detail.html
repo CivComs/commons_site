@@ -4,6 +4,11 @@
 {% block content %}
     <h1>About the {{ app.name }}:</h1>
     <h3>{{app.description}}</h3>
+    <h2>Screenshots:</h2>
+    {% load thumbnail %}
+    {% for img in app.screenshots.all %}
+        <p>{% thumbnail img.image 250x250 %}
+    {% endfor %}
     <h2>Jurisdictions which have deployed:</h2>
     <ul>
         {% for dep in app.deployment_set.all %}
