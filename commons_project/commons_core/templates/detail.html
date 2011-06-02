@@ -27,7 +27,7 @@
                       <div class="media-gallery-1col"></div>
                     {% load thumbnail %}
                     {% for img in app.screenshots.all %}
-                         <p>{% thumbnail img.image 250x250 %}</p>
+                         <p><img src="{% thumbnail img.image 250x250 %}"/></p>
                     {% endfor %}
                     </div>
                 </div>
