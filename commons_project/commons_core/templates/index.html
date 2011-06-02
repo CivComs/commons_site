@@ -3,7 +3,7 @@
 {%block title%}Civic Commons App Catalog{%endblock%}
 
 {% block content %}
-        <div class="yui3-g"><!-- grid for main content area -->
+    <div class="yui3-g"><!-- grid for main content area -->
             <div class="yui3-u-1">
                 <div id="top-alert"></div>
             </div>
@@ -11,8 +11,7 @@
             <div class="yui3-u-1">
                 <h1>Welcome</h1>
             </div> <!-- end main title -->
-<!--        <div class="yui3-g"> -->
-<!--        <div class="yui3-u-1"> -->
+
 
             <div class="yui3-g"><!-- grid for two top columns headings -->
                 <div class="yui3-u-1-2">
@@ -64,20 +63,49 @@
                 <li class="yui3-u-1-6"><div class="cat-strip-item"></div><img src="" />blargh</li>
             
             </ul> <!-- grid for category browser -->
-            <div class="yui3-g">
-                
-                {% if latest_app_list %}
-                <ul class="yui3-g">
-                {% for app in latest_app_list %}
-                    <li class="yui3-u-1-6 applist"><a href="/apps/{{ app.id }}/">{{ app.name }}</a></li>
-                {% endfor %}
-                </ul>
-                {% else %}
-                <p>No apps are available.</p>
-                {% endif %}
-                {% endblock %}
-            
-            
-            </div><!-- bottom columns: new & hot and what's happening-->
 
-    </div>
+
+            <div class="yui3-g"><!-- grid for two top columns headings -->
+                <div class="yui3-u-1-2">
+                    <div class="yui3-g">
+                        <div class="yui3-u-1">
+                        <h2 class="section-head">New & Hot</h2>
+                        </div>
+                    </div>
+                </div><!-- left col heading -->
+                <div class="yui3-u-1-2">
+                    <div class="yui3-u-1">
+                        <h2 class="section-head">What's Happening</h2>
+                    </div> 
+                </div><!-- right col heading -->
+            </div> <!-- end grid for bottom two column headings  -->
+            <div class="yui3-g"><!-- grid for two top columns content -->
+                <div class="yui3-u-1-2">
+                    <div class="left-col yui3-g">
+                        <div class="yui3-u-1">                          
+                            {% if latest_app_list %}
+                                <ul class="app-list">
+                                    {% for app in latest_app_list %}
+                                        <li><a href="/apps/{{ app.id }}/">{{ app.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                             {% else %}
+                                <p>No apps are available.</p>
+                             {% endif %}
+
+                        </div> <!-- end list div -->
+                    </div>
+                </div><!-- end left col content -->
+                <div class="yui3-u-1-2">
+                    <div class="right-col yui3-g">
+                        <div class="yui3-u-1">
+                            <ul class="recent-activity">
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </div>   
+                   </div>
+                </div><!-- end right col content -->
+            </div> <!-- end grid for bottom two column contents new & hot and what's happening -->
+    </div> <!-- end main content area -->
+    {% endblock %}
