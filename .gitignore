@@ -16,3 +16,4 @@ static_root/
 data/
 commons_project/pip-log.txt
 .installed.cfg
+.Python
