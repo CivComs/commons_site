@@ -13,9 +13,16 @@ header {
 
 }
 
+#content-wrapper{
+    border: 1px solid #aaa;
+
+    margin: .2em 0em 0em 0em;
+
+}
+
 h1 {
     font-size: 180%;
-    margin: 0em 0em 0em .5em;
+    margin: .4em 0em 0em .5em;
 }
 
 #logo {
@@ -35,7 +42,12 @@ h2 img {
 
 h3 {
     margin: .2em .3em 1em 1.5em;
-    
+}
+
+#welcome_text {
+    margin-right: 4em;
+    font-size: 140%;
+    text-align: left;
 
 }
 
@@ -46,21 +58,24 @@ ul {
     padding: 0;
 }
 
-.actions li{
+.actions_features li{
     padding .7em 2em;
     text-decoration: none;
     margin: .6em 0em 0em 1em;
+    vertical-align:top;
 
 }
 
-.actions li img {
+.actions_features li img {
     margin: 0em .3em 0em 0em;
+    
 }
 
-.actions li a {
+.actions_features li a {
     margin: 0em .3em 0em 0em;
+        vertical-align:top;
 }
-.actions {
+.actions_features {
     margin: 0em 0em 1em 0em;
 }
 
@@ -229,8 +244,24 @@ h2 a:visited {
 
 
 
+.sort-bar {
+    height: 3em;
+    margin: 2em 4em 1em 0em;
+    background-color: #eee;
+    
+}
 
+.sort-bar a {
+    margin: .2em 2em .1em .1em;
 
+}
+
+.list-filters {
+    background-color:#eee;
+    margin: 5em .7em 1em 2em;
+
+    height: 20em;
+}
 
 .app-list {
     margin: .2em .2em .1em .1em;
@@ -242,6 +273,11 @@ h2 a:visited {
    vertical-align: bottom; 
 
 }
+.app-list a {
+    
+    margin: .2em 2em .1em .1em;
+
+}
 
 
 .app-list li {
@@ -249,12 +285,14 @@ h2 a:visited {
     display: list-item;
     list-style:none;
     height: 3em;
+   border-bottom: 1px solid #aaa;
+   margin: 0em 4em 0em 0em;
 
 
 }
 
 .listed-app-name {
-    border-bottom: 1px solid #888;
+  
     vertical-align: middle;
 
 }
@@ -272,18 +310,10 @@ h2 a:visited {
     margin: 0em 1em 0em 0em;
 
 }
-.comments-link {
+.applink {
     padding: .1em .1em 3em .2em;
     line-height: 1em;
      vertical-align: middle;
-}
-
-
-#content-wrapper{
-    border: 1px solid black;
-
-    margin: .2em 0em 0em 0em;
-
 }
 
 .full-width {
@@ -300,29 +330,51 @@ h2 a:visited {
     margin:  0em 1em .5em 0em; 
 }
 
-
+.full-width ul {
+  margin:  0em 1em .5em 0em; 
+}
+.full-width ul li {
+  padding .7em 2em;
+  text-decoration: none;
+  margin: .6em 0em 0em 1em;
+  vertical-align:top;
+}
+.full-width ul li a {
+    margin: 0em .3em 0em 0em;
+  
+}
 
 .left-col{
-    border: 1px solid orange;
-    margin: 0em 1em; .5em 1em;
-    padding: .1em 1em .1em 1em;
+
+    margin: 0em 1em .5em 1em;
+   /* padding: .1em 1em .1em 1em; */
+}
+.left-col p{
+   
+        font-size: 100%;
+    text-align: center;
+
 }
 .right-col{
-    border: 1px solid brown;
-    margin: 0em 1em; .5em 1em;
-    padding: .1em 1em .1em 1em;
+/*    border: 1px solid brown; */
+    margin: 0em 1em .5em 1em;
+    /*padding: .1em 1em .1em 1em;*/
     
 }
-.right-col p {
-    margin: 1em;
-    font-size: 100%;
+.right-col h2 {
+    margin-top: 0em;
 
+}
+.right-col p {
+
+    font-size: 100%;
+    text-align: center;
 }
 
 
 .category-strip {
     border: 1px solid black;   
-    margin: 1em;
+    margin: 0em 1em;
     height: 75px;
 
 }
@@ -342,7 +394,10 @@ h2 a:visited {
 }
 
 
+.contributors {
 
+
+}
 
 
 
