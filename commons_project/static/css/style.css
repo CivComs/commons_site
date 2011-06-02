@@ -54,9 +54,10 @@ h3 {
 ul {
     
     list-style:none;
-    margin: 0;
+    margin: 1em;
     padding: 0;
 }
+ul li {}
 
 .actions_features li{
     padding .7em 2em;
@@ -371,19 +372,31 @@ h2 a:visited {
     text-align: center;
 }
 
+.centered {
+    margin: 0em 1em 0em 1em;
+
+}
 
 .category-strip {
     border: 1px solid black;   
-    margin: 0em 1em;
+    margin: 0em 1em auto;
     height: 75px;
 
 }
 .cat-strip-item {
     display: inline-block;
-    border: 1px solid black;   
+    border: 1px solid black;  
+    width: 5.7em;
+    height: 4.6em;
+    margin: 0em 0em 0em 2.24em;
+    text-align: center;
 }
 .cat-strip-item img {
     display:block;
+    width: 5.7em;
+    height: 3.4em;
+    background-color:pink;
+    
 
 }
 
