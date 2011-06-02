@@ -49,17 +49,12 @@ USE_I18N = True
 # calendars according to the current locale
 USE_L10N = True
 
-# Absolute filesystem path to the directory that will hold user-uploaded files.
-# Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
-
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash.
-# Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_ROOT = PROJECT_DIR.parent.child('data')
+MEDIA_URL = '/media/'
 
 STATIC_ROOT = PROJECT_DIR.child('static_root')
 STATIC_URL = '/static/'
+
 # Additional locations of static files
 STATICFILES_DIRS = (
     str(PROJECT_DIR.child('static')),
