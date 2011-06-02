@@ -22,18 +22,18 @@
             <div class="yui3-g"><!-- grid for two top columns content -->
               <div class="yui3-u-1-2">
                 <div class="left-col yui3-g">
-                    <div class="yui3-u-1">  
-                      <div class="media-gallery-1col"></div>
+                    <div class="yui3-u-1">
                     {% load thumbnail %}
-                    {% for img in app.screenshots.all %}
-                         <p><img src="{% thumbnail img.image 250x250 %}"/></p>
-                    {% endfor %}
-                      <ul class="sceenshot-strip">
-                        {% load thumbnail %}
+                      <div class="media-gallery-1col"><img src="{% thumbnail app.screenshots.first 250x250 %}"/></div>
+                      <!-- problem with this listing code below -->
+                      {% comment %} 
+                      <ul class="screenshot-strip">
                         {% for img in app.screenshots.all %}
-                         <li>{% thumbnail img.image 250x250 %}</li>
+                         <li><img src="{% thumbnail img.image 250x250 %}"/></li>
                         {% endfor %}
                       </ul>
+                       {% endcomment %}
+                    <!-- end of problem code -->
                     </div>
                 </div>
             </div><!-- left col content -->
