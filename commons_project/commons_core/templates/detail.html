@@ -35,10 +35,10 @@
                  <div class="right-col yui3-g">
                    <div class="yui3-u-1">
                    <h2>Key Features</h2>
-                     <ul class="features">
+                     <ul class="actions_features">
                         {%if app.features.all %}
                             {% for feat in app.features.all %}
-                           <li>{{ feat.feature }}</li>
+                           <li><img src="{{ STATIC_URL }}/img/bullet_orange.png"/>{{ feat.feature }}</li>
                             {% endfor %}
                         {%else%}
                             <p>no key features added yet <a href="#">add some</a></p>
@@ -49,7 +49,7 @@
                  <div class="right-col yui3-g">
                    <div class="yui3-u-1">
                     <h2 class="section head">What do you want to do?</h2>
-                    <ul class="actions">
+                    <ul class="actions_features">
                         <li>
                             <img src="{{ STATIC_URL }}/img/telephone.png"/><a href="#">Ask</a>a vendor for a demo of the app
                         </li>
@@ -119,6 +119,23 @@
                    </div>
                 </div><!-- end right col content -->
             </div> <!-- end grid for bottom two column contents new & hot and what's happening -->
+            <div class="yui3-g">
+                <div class="yui3-u-1 full-width">
+                  <h2> What are people saying about the {{ app.name }}:</h2>
+                     <div class="disqus-div"> 
+                      {% load disqus_tags %} 
+                      {% disqus_show_comments %}
+                      </div>
+                 </div>
+                    <div class="yui3-u-1 full-width">
+                    <h2>{{ app.name }}, in the News:</h2>
+                   <ul>
+                        {% for result in results %}
+                    <li><img src="{{ STATIC_URL }}/img/newspaper.png"/><a href="{{ result.unescapedUrl }}" target="newpage">{{ result.title|safe }}</a></li>
+        {% endfor %}
+    </ul>
+    </div>
+    </div> <!-- end disqus and news feed items -->        
     </div> <!-- end main content area -->
     
     <script type="text/javascript">
@@ -155,15 +172,7 @@
 
 
         
-    <h2> What are people saying about the {{ app.name }}:</h2>
-    {% load disqus_tags %}
-    {% disqus_show_comments %}
-    <h2>Google Search results for {{ app.name }}:</h2>
-    <ul>
-        {% for result in results %}
-        <li><a href="{{ result.unescapedUrl }}" target="newpage">{{ result.title|safe }}</a></li>
-        {% endfor %}
-    </ul>
+    
     
     
 {% endblock %}

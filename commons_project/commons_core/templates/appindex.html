@@ -30,7 +30,8 @@
               <div class="yui3-u-1-2">
                  <div class="right-col yui3-g">
                    <div class="yui3-u-1">
-                    <p> hi</p>
+                      <div class="media-gallery-1col"></div>
+                      <p>this is explaining the app</p>
                 </div>   
             </div>
         </div><!-- right col content -->
@@ -38,10 +39,16 @@
 
             <div class="yui3-g">
                 <div class="yui3-u-1-4">
-                    
-                </div> <!-- end filters -->
-                <div class="yui3-u-1-4">
-                    <div class="sort-bar"></div>
+                    <div class="list-filters">
+                        
+                    </div> <!-- end filters -->
+                </div> <!-- end filters container -->
+                <div class="yui3-u-3-4">
+                    <div class="yui3-u-1">
+                        <div class="sort-bar">
+                            
+                        </div>
+                    </div>
                      <div class="yui3-u-1">                          
                            {% if app_list %}
                                 <ul class="app-list">
@@ -53,7 +60,8 @@
                                          <div class="star-ratings">
                                              <div id="star-rating-{{ app.id }}"></div>
                                          </div>  -->  
-                                        <a href="/apps/{{ app.id }}/comments"><img title="comments" src="{{ STATIC_URL }}/img/comments.png"/><span class="comments-link">read comments</span></a>
+                                        <a href="/apps/{{ app.id }}/comments"><img title="comments" src="{{ STATIC_URL }}/img/comments.png"/><span class="applink">read comments (12)</span></a>
+                                        <a href="/apps/{{ app.id }}/comments"><img title="package" src="{{ STATIC_URL }}/img/package.png"/><span class="applink">see deployments (3)</span></a>
                                         </li>
                                     {% endfor %}
                                 </ul>
@@ -72,16 +80,6 @@
 
 </div> <!-- end div for main content area -->
 
-<!-- +++++++++++++++++++++++++++++++++++++++++++++++  -->
 
        
-{% if app_list %}
-    <ul>
-    {% for app in app_list %}
-        <li><a href="{{ app.id }}/">{{ app.name }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No apps are available.</p>
-{% endif %}
 {% endblock %}
