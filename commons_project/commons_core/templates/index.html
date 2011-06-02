@@ -130,7 +130,7 @@
     	         {% for app in latest_app_list %}
     	            $('#star-rating-{{ app.id }}').raty({
                         path: "{{STATIC_URL}}/img/",
-                        start: Math.floor(Math.random()*6)
+                        start: Math.floor(Math.random()*3) + 2
                         });
                  {% endfor %}
              {% endif %}
