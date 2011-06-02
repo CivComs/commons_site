@@ -94,7 +94,7 @@
                 <div class="yui3-u-1-2">
                     <div class="left-col yui3-g">
                         <div class="yui3-u-1">
-                           <h2>Jurisdictions which have deployed:</h2>
+                           <h3>Jurisdictions which have deployed:</h3>
                             <ul>
                                 {% for dep in app.deployment_set.all %}
                                 <li><a href="/dep/{{dep.id}}">{{ dep.jurisdiction.name }}</a></li>

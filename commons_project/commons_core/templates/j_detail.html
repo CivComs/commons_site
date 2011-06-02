@@ -7,6 +7,8 @@
 <p>{{ jurisdiction.description }}
 <h2>Applications deployed in {{jurisdiction.name}}</h2>
 {% for deployment in jurisdiction.deployment_set.all %}
-<p><a href="/dep/{{deployment.id}}/">{{deployment.name}}</a></p>
+<ul>
+    <li><a href="/dep/{{deployment.id}}/">{{deployment.name}}</a></li>
+</ul>
 {% endfor %}
 {% endblock %}
