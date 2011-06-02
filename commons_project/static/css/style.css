@@ -14,16 +14,57 @@ header {
 }
 
 h1 {
-/*    margin: .2em .2em .2em .3em; */
     font-size: 180%;
+    margin: 0em 0em 0em .5em;
+}
+
+#logo {
+    margin: 0em 0em 0em 0em;
 }
 
 h2 {
-    margin: .2em .3em .3em .6em;
+    margin: .4em .3em .3em .8em;
     font-size: 140%;
     display: inline-block;
 
 }
+
+h2 img {
+    margin: 0em .3em 0em .1em;
+}
+
+h3 {
+    margin: .2em .3em 1em 1.5em;
+    
+
+}
+
+ul {
+    
+    list-style:none;
+    margin: 0;
+    padding: 0;
+}
+
+.actions li{
+    padding .7em 2em;
+    text-decoration: none;
+    margin: .6em 0em 0em 1em;
+
+}
+
+.actions li img {
+    margin: 0em .3em 0em 0em;
+}
+
+.actions li a {
+    margin: 0em .3em 0em 0em;
+}
+.actions {
+    margin: 0em 0em 1em 0em;
+}
+
+
 
 a:link  {
      
@@ -37,9 +78,18 @@ h2 a:visited {
     text-decoration: none;
 }
 
-#utility {
-    line-height:140%;
-    vertical-align: bottom;
+#user {
+    line-height:2em;
+    float:right;
+    white-space: nowrap;
+    word-spacing: 1em;
+    text-align:right;
+
+
+}
+#user li a{
+    padding: .4em 1em 0em 1em;
+
 
 }
 .nav-bar ul {
@@ -160,22 +210,6 @@ h2 a:visited {
    }
 
 
-#nadv ldi  {
-    vertical-align: middle;
-    display:inline;
-    list-style:none;
-    border-right: 1px black;
-    padding: .2em;
-    text-align: right;
-    border: 1px solid #55ffff;
-}
-#ndav li span{
-    text-align: right;
-    padding-right:0.2em;
-}
-
-
-
 #top-alert {
     height:50px;
     margin: 0em;
@@ -251,6 +285,21 @@ h2 a:visited {
     margin: .2em 0em 0em 0em;
 
 }
+
+.full-width {
+    border: 1px solid green;
+    margin: 0em 1em; .5em 1em;
+    padding: .1em 1em .1em 1em;
+
+}
+
+.full-width p {
+    margin:  0em 1em .5em 2em; 
+}
+.full-width h2 {
+    margin:  0em 1em .5em 0em; 
+}
+
 
 
 .left-col{
