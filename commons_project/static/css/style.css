@@ -114,8 +114,13 @@ h2 a:visited {
 #user li a{
     padding: .4em 1em 0em 1em;
 
-
 }
+
+#share {
+    float: right;
+    
+}
+
 .nav-bar ul {
 
     padding 0;
@@ -202,7 +207,7 @@ h2 a:visited {
    border-top: 1px solid #aaa;
    background: #777;
 /*   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7)); */
-   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+/*   background: -moz-linear-gradient(top, #3e779d, #65a9d7); */
    padding: .5em .5em;
    -webkit-border-radius: 4px;
    -moz-border-radius: 4px;
