@@ -22,4 +22,8 @@
         <li><a href="{{ result.unescapedUrl }}" target="newpage">{{ result.title|safe }}</a></li>
         {% endfor %}
     </ul>
+    <h2> What are people saying about the {{ app.name }}:</h2>
+    {% load disqus_tags %}
+    {% disqus_show_comments %}
+    
 {% endblock %}
