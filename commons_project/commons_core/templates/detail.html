@@ -25,10 +25,12 @@
                     <div class="yui3-u-1">  
 
                       <div class="media-gallery-1col"></div>
-                    {% load thumbnail %}
-                    {% for img in app.screenshots.all %}
-                         <p>{% thumbnail img.image 250x250 %}</p>
-                    {% endfor %}
+                      <ul class="sceenshot-strip">
+                        {% load thumbnail %}
+                        {% for img in app.screenshots.all %}
+                         <li>{% thumbnail img.image 250x250 %}</li>
+                        {% endfor %}
+                      </ul>
                     </div>
                 </div>
             </div><!-- left col content -->
@@ -107,15 +109,21 @@
                     <div class="right-col yui3-g">
                         <div class="yui3-u-1">
                              <h3 class="section-head">Contributors to the app</h2>
-                            <ul class="contributors">
+                            <ul class="user-strip">
                                 <li></li>
                                 <li></li>
                             </ul>
                             <h3 class="section-head">Users of the app</h2>
-                            <ul class="users">
+                            <ul class="user-strip">
                                 <li></li>
                                 <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            <p class="seemore"><a href="#">see more...</a></p>
                             </ul>
+
                         </div>   
                    </div>
                 </div><!-- end right col content -->

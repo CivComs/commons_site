@@ -27,6 +27,10 @@ h1 {
 
 #logo {
     margin: 0em 0em 0em 0em;
+    -webkit-margin-before: 0em;
+-webkit-margin-after: 0em;
+-webkit-margin-start: 0px;
+-webkit-margin-end: 0px;
 }
 
 h2 {
@@ -54,7 +58,7 @@ h3 {
 ul {
     
     list-style:none;
-    margin: 1em;
+
     padding: 0;
 }
 ul li {}
@@ -100,7 +104,7 @@ h2 a:visited {
     white-space: nowrap;
     word-spacing: 1em;
     text-align:right;
-
+    margin: 0em;
 
 }
 #user li a{
@@ -249,12 +253,13 @@ h2 a:visited {
     height: 3em;
     margin: 2em 4em 1em 0em;
     background-color: #eee;
+    padding: .2em 0em;
     
 }
 
 .sort-bar a {
     margin: .2em 2em .1em .1em;
-
+    padding: 1em;
 }
 
 .list-filters {
@@ -318,9 +323,9 @@ h2 a:visited {
 }
 
 .full-width {
-    border: 1px solid green;
-    margin: 0em 1em; .5em 1em;
-    padding: .1em 1em .1em 1em;
+  /*    border: 1px solid green; */
+    margin: 1em .2em; 4em 1em;
+    padding: .1em .2em .1em 1em;
 
 }
 
@@ -406,13 +411,57 @@ h2 a:visited {
 
 }
 
+.screenshot-strip {
+/*    border: 1px solid black;   */
+    margin-left: 3em;
+    height: 3em;
 
-.contributors {
+}
+.screenshot-strip li {
+    display: inline-block;
+    border: 1px solid #aaa;  
+    width: 3em;
+    height: 3em;
+    margin: 0em .5em 0em 0em;
+    text-align: center;
+    background-color:pink;
+}
+.screenshot-strip-item img {
+    display:block;
+     width: 3em;
+    height: 3em;
 
+    
 
 }
 
+.user-strip {
+/*    border: 1px solid black;   */
+    margin-left: 3em;
+    height: 3em;
 
+}
+.user-strip li {
+    display: inline-block;
+    border: 1px solid #aaa;  
+    width: 3em;
+    height: 3em;
+    margin: 0em .5em 0em 0em;
+    text-align: center;
+}
+.user-strip-item img {
+    display:block;
+     width: 3em;
+    height: 3em;
+    background-color:pink;
+    
+
+}
+
+.seemore{
+    float:right;
+    margin: 0em 2.5em 1em 0em;
+}
 
 #djDebug{
 letter-spacing:0;
