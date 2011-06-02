@@ -1,4 +1,4 @@
-from commons_core.models import App, Jurisdiction, Deployment, SSOrganization, SSProduct, SSBudget, SSDependency, Dependency, DependencyType
+from commons_core.models import App, Jurisdiction, Deployment, SSOrganization, SSProduct, SSBudget, SSDependency, Dependency, DependencyType, Screenshot, Feature
 from django.contrib import admin
 
 class DependencyInline(admin.TabularInline):
@@ -28,6 +28,8 @@ admin.site.register(DependencyType, MyDependencyTypeAdmin)
 admin.site.register(App, AppAdmin)
 admin.site.register(Jurisdiction)
 admin.site.register(Deployment)
+admin.site.register(Screenshot)
+admin.site.register(Feature)
 #admin.site.register(SSOrganization)
 #admin.site.register(SSProduct)
 #admin.site.register(SSBudget)
