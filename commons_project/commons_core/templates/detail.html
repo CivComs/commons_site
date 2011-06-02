@@ -2,33 +2,159 @@
 {% block title %}Detail of {{ app.name}}{% endblock %}
 
 {% block content %}
-    <h1>About the {{ app.name }}:</h1>
-    <h3>{{app.description}}</h3>
-    <h2>Screenshots:</h2>
-    {% load thumbnail %}
-    {% for img in app.screenshots.all %}
-        <p>{% thumbnail img.image 250x250 %}
-    {% endfor %}
-    <h2>Jurisdictions which have deployed:</h2>
-    <ul>
-        {% for dep in app.deployment_set.all %}
-        <li><a href="/dep/{{dep.id}}">{{ dep.jurisdiction.name }}</a></li>
-        {% endfor %}
-    </ul>
-    <h2>Features of the {{ app.name }}:</h2>
-     <ul>
-        {% for feat in app.features.all %}
-        <li>{{ feat.feature }}</li>
-        {% endfor %}
-    </ul>
+    
+  <div class="yui3-g"><!-- grid for main content area -->
+            <div class="yui3-u-1">
+                <div id="top-alert">
+                    <h2>
+                    <a href="/">log-in</a> to get access to great case studies, vendors, experts and more!
+                    </h2>
+                </div>
+            </div>
+        
+            <div class="yui3-u-1">
+                <h1>{{ app.name }}</h1>
+            </div> <!-- end app name -->
+           <div class="yui3-u-1">
+                <h3>{{app.description}}</h3>
+            </div> <!-- end description -->
+
+            <div class="yui3-g"><!-- grid for two top columns content -->
+              <div class="yui3-u-1-2">
+                <div class="left-col yui3-g">
+                    <div class="yui3-u-1">  
+
+                      <div class="media-gallery-1col"></div>
+                    {% load thumbnail %}
+                    {% for img in app.screenshots.all %}
+                         <p>{% thumbnail img.image 250x250 %}</p>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div><!-- left col content -->
+              <div class="yui3-u-1-2">
+                 <div class="right-col yui3-g">
+                   <div class="yui3-u-1">
+                   <h2>Key Features</h2>
+                     <ul class="features">
+                        {%if app.features.all %}
+                            {% for feat in app.features.all %}
+                           <li>{{ feat.feature }}</li>
+                            {% endfor %}
+                        {%else%}
+                            <p>no key features added yet <a href="#">add some</a></p>
+                        {%endif%}
+                    </ul>
+                    </div>
+                    </div> <!-- right col content pt 1 -->
+                 <div class="right-col yui3-g">
+                   <div class="yui3-u-1">
+                    <h2 class="section head">What do you want to do?</h2>
+                    <ul class="actions">
+                        <li>
+                            <img src="{{ STATIC_URL }}/img/telephone.png"/><a href="#">Ask</a>a vendor for a demo of the app
+                        </li>
+                        <li>
+                            <img src="{{ STATIC_URL }}/img/comments.png"/><a href="#">Read</a>comments about the app
+                        </li>
+                        <li>
+                            <img src="{{ STATIC_URL }}/img/package_go.png"/><a href="#">Test drive</a>the app
+                        </li>
+                    </ul>
+                    
+                </div>   
+            </div>
+             </div><!-- all right col content -->
+            </div> <!-- end grid for top two column contents -->
+            
+            
+            <div class="yui3-g full-width"> <!-- grid for category head , may be uneeded -->
+                <div class="yui3-u-1-2">
+                     <h2 class="section-head"><img src="{{ STATIC_URL }}/img/wrench_orange.png" alt="wrench" />Technical & Deployment Information</h2>
+                      <p>no technical details available. <a href="#">add some</a></p>
+                </div>
+            </div> <!-- end tech details  -->
+
+            <div class="yui3-g"><!-- grid for two top columns headings -->
+                <div class="yui3-u-1"> <h2 class="section-head">Who is using the {{app.name}}?</h2></div>
+                <div class="yui3-u-1-2">
+                    <div class="yui3-g">
+                        <div class="yui3-u-1 city-viewer">
+
+                        </div>
+                    </div>
+                </div><!-- left col heading -->
+                <div class="yui3-u-1-2">
+                    <div class="yui3-u-1">
+                       
+                    </div> 
+                </div><!-- right col heading -->
+            </div> <!-- end grid for bottom two column headings  -->
+            <div class="yui3-g"><!-- grid for bottom two columns content -->
+                <div class="yui3-u-1-2">
+                    <div class="left-col yui3-g">
+                        <div class="yui3-u-1">
+                           <h2>Jurisdictions which have deployed:</h2>
+                            <ul>
+                                {% for dep in app.deployment_set.all %}
+                                <li><a href="/dep/{{dep.id}}">{{ dep.jurisdiction.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div><!-- end left col content -->
+                <div class="yui3-u-1-2">
+                    <div class="right-col yui3-g">
+                        <div class="yui3-u-1">
+                             <h3 class="section-head">Contributors to the app</h2>
+                            <ul class="contributors">
+                                <li></li>
+                                <li></li>
+                            </ul>
+                            <h3 class="section-head">Users of the app</h2>
+                            <ul class="users">
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </div>   
+                   </div>
+                </div><!-- end right col content -->
+            </div> <!-- end grid for bottom two column contents new & hot and what's happening -->
+    </div> <!-- end main content area -->
+    
+    <script type="text/javascript">
+    	$(function() {
+    	    
+    	    
+    	    
+    	    {% if latest_app_list %}
+    	         {% for app in latest_app_list %}
+    	            $('#star-rating-{{ app.id }}').raty({
+                        path: "{{STATIC_URL}}/img/",
+                        start: Math.floor(Math.random()*6)
+                        });
+                 {% endfor %}
+             {% endif %}
+             
+              {% if user.is_authenticated %}
+    	         $('#top-alert').hide();
+    	     {% else %}
+        	     $('#top-alert').show('fast');
+    	     {% endif %}
+             
+             
+    	});
+    </script>
+       
+    <h2> What are people saying about the {{ app.name }}:</h2>
+    {% load disqus_tags %}
+    {% disqus_show_comments %}
     <h2>Google Search results for {{ app.name }}:</h2>
     <ul>
         {% for result in results %}
         <li><a href="{{ result.unescapedUrl }}" target="newpage">{{ result.title|safe }}</a></li>
         {% endfor %}
     </ul>
-    <h2> What are people saying about the {{ app.name }}:</h2>
-    {% load disqus_tags %}
-    {% disqus_show_comments %}
+    
     
 {% endblock %}
