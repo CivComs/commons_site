@@ -23,8 +23,11 @@
               <div class="yui3-u-1-2">
                 <div class="left-col yui3-g">
                     <div class="yui3-u-1">  
-
                       <div class="media-gallery-1col"></div>
+                    {% load thumbnail %}
+                    {% for img in app.screenshots.all %}
+                         <p><img src="{% thumbnail img.image 250x250 %}"/></p>
+                    {% endfor %}
                       <ul class="sceenshot-strip">
                         {% load thumbnail %}
                         {% for img in app.screenshots.all %}
