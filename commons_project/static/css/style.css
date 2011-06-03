@@ -82,7 +82,7 @@ ul li {}
 
 .actions_features li a {
     margin: 0em .3em 0em 0em;
-        vertical-align:top;
+ 
 }
 .actions_features {
     margin: 0em 0em 1em 0em;
@@ -266,7 +266,7 @@ h2 a:visited {
     height: 3em;
     margin: 2em 4em 1em 0em;
     background-color: #eee;
-    padding: .2em 0em;
+    padding: .2em 1em;
     
 }
 
@@ -277,9 +277,10 @@ h2 a:visited {
 
 .list-filters {
     background-color:#eee;
-    margin: 5em .7em 1em 2em;
-
+    margin: 5.4em .7em 1em 2em;
+    padding: .3em;
     height: 20em;
+    text-align: center;
 }
 
 .app-list {
