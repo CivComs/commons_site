@@ -121,6 +121,10 @@ h2 a:visited {
     
 }
 
+.right {
+    float: right;
+}
+
 .nav-bar ul {
 
     padding 0;
@@ -142,7 +146,7 @@ h2 a:visited {
      border: 1px solid #444;*/
      line-height:3em; 
      margin-bottom: .4em;
-     
+        background-color: #ddd;     
     
 
 }
@@ -174,7 +178,7 @@ h2 a:visited {
 }
 
 #rest-of-bar{
-    width:67%
+    width:100%
 
 }
 
