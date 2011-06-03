@@ -1,5 +1,5 @@
 *.py[co]
-
+*.swp # vim keeps a temporary file open when editing
 # Packages
 *.egg
 *.egg-info
@@ -11,8 +11,11 @@ lib
 include
 develop-eggs
 src
+# Local sqlite db
 *.db
+# static files collected for deployment
 static_root/
+# user uploaded files
 data/
 commons_project/pip-log.txt
 .installed.cfg

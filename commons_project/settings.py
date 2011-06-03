@@ -86,6 +86,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'privatebeta.middleware.PrivateBetaMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
@@ -115,6 +116,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'filer',
     'disqus',
+    'privatebeta',
 )
 
 
@@ -124,7 +126,7 @@ INTERNAL_IPS = ('127.0.0.1',)
 
 AUTHENTICATION_BACKENDS = (
     'userena.backends.UserenaAuthenticationBackend',
-    'gugykardian.backends.ObjectPermissionBackend',
+    'guardian.backends.ObjectPermissionBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -136,6 +138,9 @@ LOGIN_REDIRECT_URL = '/users/%(username)s/'
 LOGIN_URL = '/users/signin/'
 LOGOUT_URL = '/users/signout/'
 USERENA_SIGNIN_REDIRECT_URL = '/users/%(username)s/'
+
+PRIVATEBETA_ALWAYS_ALLOW_VIEWS = ('userena.views.signin',)
+# PRIVATEBETA_ENABLE_BETA = False
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

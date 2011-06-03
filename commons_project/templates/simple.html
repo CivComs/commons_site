@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <link href='http://fonts.googleapis.com/css?family=Cabin:regular,regularitalic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+        <meta charset=utf-8 />
+        <title>{% block title %}{% endblock %}</title> 
+
+ <!--       <link rel="stylesheet" href="{{ STATIC_URL }}css/reset.css" type="text/css" /> -->
+        <script src="http://yui.yahooapis.com/3.3.0/build/yui/yui-min.js"   charset="utf-8"></script>
+ <!--        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css"> -->
+         <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssbase/base-context-min.css">
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssgrids/grids-min.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" type="text/css" />
+        
+    
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.raty.min.js"></script>    
+    
+        <!-- IMPORTANT Remember to update the files, run : -->
+        <!--  ./manage.py collectstatic  -->
+      
+    </head>
+
+	<body class="yui3-g">
+		<header id="header" class="yui3-g">
+			<h1 id="logo" class="yui3-u-3-5"><a href="/">The Commons Project</a></h1>
+		</header>
+        <section class="yui3-u-1" id="content-wrapper">
+
+        {% block content %}{% endblock %}
+
+        </section>
+    </body>
+</html>

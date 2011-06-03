@@ -1,13 +1,17 @@
 Django==1.3
 epio
-South == 0.7.3
-django-pipes == 0.2
-Unipath
+South==0.7.3
+django-pipes==0.2
+Unipath==0.2.1
+# Have to use a private fork for a while until a release with the
+# username fix is available:
 -e git://github.com/CivComs/django-userena.git#egg=django-userena
-django-debug-toolbar == 0.8.5
+django-debug-toolbar==0.8.5
 PIL==1.1.7
 easy-thumbnails==1.0-alpha-17
 django-disqus==0.4.1
 #django-filer==0.8.2
-# Must use this fork because 0.8.2 doesn't work (no upload button)
+# Must use this fork because 0.8.2 doesn't work (no upload button):
 -e git://github.com/CivComs/django-filer.git#egg=django-filer
+# There doesn't seem to be a package on PyPI:
+-e git://github.com/pragmaticbadger/django-privatebeta.git#egg=django-privatebeta
