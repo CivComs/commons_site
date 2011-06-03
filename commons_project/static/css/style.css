@@ -289,7 +289,9 @@ h2 a:visited {
 }
 .app-list img {
     
-   vertical-align: bottom; 
+    vertical-align: middle;
+
+    
 
 }
 .app-list a {
@@ -303,9 +305,10 @@ h2 a:visited {
 
     display: list-item;
     list-style:none;
-    height: 3em;
+/*    height: 3em; */
    border-bottom: 1px solid #aaa;
    margin: 0em 4em 0em 0em;
+    padding: .2em 0em .2em 0em;
 
 
 }
@@ -324,13 +327,18 @@ h2 a:visited {
 }
 .listed-app-name {}
 
+.comments-link {
+
+    margin: 0em .3em;
+}
+
 .star-ratings {
     display: inline-block;
     margin: 0em 1em 0em 0em;
 
 }
 .applink {
-    padding: .1em .1em 3em .2em;
+    padding: .1em .1em .3em .2em;
     line-height: 1em;
      vertical-align: middle;
 }
