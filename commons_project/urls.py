@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     (r'^users/', include('userena.urls')),
     (r'^messages/', include('userena.contrib.umessages.urls')),
+    (r'^invite/', include('privatebeta.urls')),
     #(r'^', include('filer.server.urls')),
 )
 
