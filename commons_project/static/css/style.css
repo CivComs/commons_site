@@ -2,7 +2,7 @@ body {
     margin: 0 auto;
     width: 960px;
     font-family: helvetica, arial, sans-serif;
-    border: 1px solid #ddd;
+
     padding: 0;
     color: #403D3E;
     }
@@ -95,8 +95,8 @@ a:link  {
     text-decoration:none; 
 }
 a:visited           { color:#3366aa; text-decoration:none; }
-a:hover             { color:#9E0B30; text-decoration:underline; }
-a:active            { color:#9E0B30; text-decoration:underline; }
+a:hover             { color:#9E0B30; text-decoration:none; }
+a:active            { color:#9E0B30; text-decoration:none; }
 
 h2 a:visited {
     text-decoration: none;
@@ -188,7 +188,7 @@ h2 a:visited {
     
 }
 
-#rest-of-bar:hover {
+#bar-right:hover {
     background-color:#ddd;
 
 }
@@ -230,6 +230,7 @@ h2 a:visited {
    border-top-color: #bbb;
    background: #777;
    color: #ccc;
+   cursor:pointer;
    }
 .button:active {
    border-top-color: #666;
@@ -240,6 +241,7 @@ h2 a:visited {
     -webkit-box-shadow: rgba(0,0,0,1) 0 -1px 0;
    -moz-box-shadow: rgba(0,0,0,1) 0 -1px 0;
    box-shadow: rgba(0,0,0,1) 0 -1px 0;
+   cursor:pointer;
    }
 
 

@@ -3,6 +3,145 @@
 {%block title%}Jurisdiction{%endblock%}
 
 {% block content %}
+         
+<div class="yui3-g"><!-- grid for main content area -->
+         <div class="yui3-u-1">
+                <div id="top-alert">
+                    <h2>
+                    <a href="/">log-in</a> to get access to great case studies, vendors, experts and more!
+                    </h2>
+                </div>
+            </div>
+        
+            <div class="yui3-u-1-2">
+                <div></div>
+                <div class="yui3-g">
+                    <div class="yui3-u-1-4"><img src="#"/></div><!-- end image -->
+                    <div class="yui3-u-3-4">
+                        <h1>{{ jurisdiction.name }}</h1>
+                        <div class="about">
+                        <ul>
+                            <li>population: </li>
+                            <li>budget: </li>
+                        </ul>
+                    </div> <!-- end about -->
+                    </div> <!-- end title -->
+
+                
+            </div>
+            </div> <!-- end main title -->
+            
+            <div class="yui3-g"><!-- grid for two top columns headings -->
+                <div class="yui3-u-1-2">
+                    <div class="yui3-g">
+                        <div class="yui3-u-1">
+                        <h2 class="section-head">{{ jurisdiction.name }} uses:</h2>
+                        </div>
+                    </div>
+                </div><!-- left col heading -->
+                <div class="yui3-u-1-2">
+                    <div class="yui3-u-1">
+                        <h2 class="section-head">{{ jurisdiction.name }} contributes to:</h2>
+                    </div> 
+                </div><!-- right col heading -->
+            </div> <!-- end grid for twop two column headings  -->
+            <div class="yui3-g"><!-- grid for two top columns content -->
+              <div class="yui3-u-1-2">
+                <div class="left-col yui3-g">
+                    <div class="yui3-u-1">  
+                        <ul class="app-list">
+                            {% for deployment in jurisdiction.deployment_set.all %}
+                            <li class="listed-app-name"><h3><a href="/dep/{{deployment.id}}/">{{deployment.app}} in use at {{jurisdiction.name}}</a></h3>
+                            <div class="star-ratings">
+                                <div id="star-rating-{{ deployment.app.id }}"></div>
+                            </div>  
+                            <a href="/apps/{{ app.id }}/comments"><img title="comments" src="{{ STATIC_URL }}/img/comments.png"/><span class="applink">read comments (12)</span></a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                      <!--<div class="media-gallery-1col"></div>
+                      <p>this is explaining the app</p> -->
+                    </div>
+                </div>
+            </div><!-- left col content -->
+              <div class="yui3-u-1-2">
+                 <div class="right-col yui3-g">
+                   <div class="yui3-u-1">
+                    
+                    
+                 </div>   
+            </div>
+        </div><!-- right col content -->
+            </div> <!-- end grid for top two column contents -->
+            
+            
+                    <div class="yui3-g"> <!-- grid for category head , may be uneeded -->
+                <div class="yui3-u-1-3">
+                     <h2 class="section-head">{{jurisdiction.name}}'s Categories of Apps</h2>
+                </div>
+            </div> <!-- category browser head -->
+            
+            <div class="yui3-g">
+            <div class="yui3-u-1 centered">
+            <ul class="yui3-g category-strip">
+             
+                <li class="yui3-u-1-6"><div class="cat-strip-item"><a href="/apps/"><img src="" />Health</a></div></li>
+                <li class="yui3-u-1-6"><div class="cat-strip-item"><a href="/apps/"><img src="" />Transit</a></div></li>
+                <li class="yui3-u-1-6"><div class="cat-strip-item"><a href="/apps/"><img src="" />Governance</a></div></li>
+                <li class="yui3-u-1-6"><div class="cat-strip-item"><a href="/apps/"><img src="" />Geographic</a></div></li>
+                <li class="yui3-u-1-6"><div class="cat-strip-item"><a href="/apps/"><img src="" />Police</a></div></li>
+                <li class="yui3-u-1-6"><div class="cat-strip-item"><a href="/apps/"><img src="" />Fire</a></div></li>
+            
+            </ul> 
+            </div>
+            </div><!-- grid for category browser -->
+            <div class="yui3-g">
+                <div class="yui3-u-1 full-width">
+                  <h2> Recent Activity in {{ jurisdiction.name }}:</h2>
+                     <div class="disqus-div"> 
+                      {% load disqus_tags %} 
+                      {% disqus_show_comments %}
+                      </div>
+                 </div>
+                    <div class="yui3-u-1 full-width">
+                    <h2>{{ app.name }}, in the News:</h2>
+                   <ul>
+                        {% for result in results %}
+                    <li><img src="{{ STATIC_URL }}/img/newspaper.png"/><a href="{{ result.unescapedUrl }}" target="newpage">{{ result.title|safe }}</a></li>
+        {% endfor %}
+                </ul>
+           </div>
+    </div> <!-- end disqus and news feed items --> 
+</div> <!-- end main content area -->
+ 
+ 
+ 
+ 
+ 
+ <script type="text/javascript">
+    	$(function() {
+    	    
+    	    
+    	    
+    	    {% if jurisdiction.deployment_set %}
+    	         {% for deployment in jurisdiction.deployment_set.all %}
+    	            $('#star-rating-{{ deployment.app.id }}').raty({
+                        path: "{{STATIC_URL}}/img/",
+                        start: Math.floor(Math.random()*3) +2
+                        });
+                 {% endfor %}
+             {% endif %}
+             
+              {% if user.is_authenticated %}
+    	         $('#top-alert').hide();
+    	     {% else %}
+        	     $('#top-alert').show('fast');
+    	     {% endif %}
+             
+             
+    	});
+    </script>
+<h1>hi</h1>
 <h1>{{ jurisdiction.name }}</h1>
 <p>{{ jurisdiction.description }}
 <h2>Applications deployed in {{jurisdiction.name}}</h2>
