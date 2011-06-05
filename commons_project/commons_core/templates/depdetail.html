@@ -7,4 +7,23 @@
     <h2>This deployment was of <a href="/apps/{{dep.app.id}}/">{{dep.app}} Application</a></h2>
     <h2>It was deployed in: <a href="/j/{{dep.jurisdiction.id}}/">{{ dep.jurisdiction }}</a></h2>
     </ul>
+    
+    <div class="yui3-g">
+                <div class="yui3-u-1 full-width">
+                  <h2> Recent Activity in {{ jurisdiction.name }}:</h2>
+                     <div class="disqus-div"> 
+                      {% load disqus_tags %} 
+                      {% disqus_show_comments %}
+                      </div>
+                 </div> <!-- end comments, recent activity -->
+                <div class="yui3-u-1 full-width">
+                     <h2 class="section-head">People who work in {{jurisdiction.name}}</h2>
+                   <ul class="user-strip">
+                        <!-- for top 26 people in jurisdiction (by activity) -->
+                    <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                    <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                        <!-- endfor -->
+                </ul>
+           </div> <!-- end people pic list -->
+    </div> <!-- end disqus and people pics --> 
 {% endblock %}

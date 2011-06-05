@@ -14,21 +14,16 @@
             </div>
         
             <div class="yui3-u-1-2">
-                <div></div>
-                <div class="yui3-g">
-                    <div class="yui3-u-1-4"><img src="#"/></div><!-- end image -->
-                    <div class="yui3-u-3-4">
+                    <div class="title_image"><img src="#"/></div>
+                    <div class="title_info">
                         <h1>{{ jurisdiction.name }}</h1>
-                        <div class="about">
+                    </div>
+                    <div class="about">
                         <ul>
-                            <li>population: </li>
-                            <li>budget: </li>
+                            <li><strong>employees:</strong> 12,235</li>
+                            <li><strong>budget:</strong> ~6 Billion </li>
                         </ul>
                     </div> <!-- end about -->
-                    </div> <!-- end title -->
-
-                
-            </div>
             </div> <!-- end main title -->
             
             <div class="yui3-g"><!-- grid for two top columns headings -->
@@ -53,7 +48,7 @@
                             {% for deployment in jurisdiction.deployment_set.all %}
                             <li class="listed-app-name"><h3><a href="/dep/{{deployment.id}}/">{{deployment.app}} in use at {{jurisdiction.name}}</a></h3>
                             <div class="star-ratings">
-                                <div id="star-rating-{{ deployment.app.id }}"></div>
+                                <div class="star-rating-{{ deployment.app.id }}"></div>
                             </div>  
                             <a href="/apps/{{ app.id }}/comments"><img title="comments" src="{{ STATIC_URL }}/img/comments.png"/><span class="applink">read comments (12)</span></a>
                             </li>
@@ -67,7 +62,16 @@
               <div class="yui3-u-1-2">
                  <div class="right-col yui3-g">
                    <div class="yui3-u-1">
-                    
+                         <ul class="app-list">
+                            {% for deployment in jurisdiction.deployment_set.all %}
+                            <li class="listed-app-name"><h3><a href="/dep/{{deployment.id}}/">{{deployment.app}} in use at {{jurisdiction.name}}</a></h3>
+                            <div class="star-ratings">
+                                <div class="star-rating-{{ deployment.app.id }}"></div>
+                            </div>  
+                            <a href="/apps/{{ app.id }}/comments"><img title="comments" src="{{ STATIC_URL }}/img/comments.png"/><span class="applink">read comments (12)</span></a>
+                            </li>
+                            {% endfor %}
+                        </ul>
                     
                  </div>   
             </div>
@@ -75,8 +79,8 @@
             </div> <!-- end grid for top two column contents -->
             
             
-                    <div class="yui3-g"> <!-- grid for category head , may be uneeded -->
-                <div class="yui3-u-1-3">
+            <div class="yui3-g"> <!-- grid for category head , may be uneeded -->
+                <div class="yui3-u-1-2">
                      <h2 class="section-head">{{jurisdiction.name}}'s Categories of Apps</h2>
                 </div>
             </div> <!-- category browser head -->
@@ -102,16 +106,18 @@
                       {% load disqus_tags %} 
                       {% disqus_show_comments %}
                       </div>
-                 </div>
-                    <div class="yui3-u-1 full-width">
-                    <h2>{{ app.name }}, in the News:</h2>
-                   <ul>
-                        {% for result in results %}
-                    <li><img src="{{ STATIC_URL }}/img/newspaper.png"/><a href="{{ result.unescapedUrl }}" target="newpage">{{ result.title|safe }}</a></li>
-        {% endfor %}
+                 </div> <!-- end comments, recent activity -->
+                <div class="yui3-u-1 full-width">
+                     <h2 class="section-head">People who work in {{jurisdiction.name}}</h2>
+                   <ul class="user-strip">
+                        <!-- for top 26 people in jurisdiction (by activity) -->
+                    <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                    <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                        <!-- endfor -->
                 </ul>
-           </div>
-    </div> <!-- end disqus and news feed items --> 
+           </div> <!-- end people pic list -->
+           </div> <!-- end disqus and people pics --> 
+
 </div> <!-- end main content area -->
  
  
@@ -125,7 +131,7 @@
     	    
     	    {% if jurisdiction.deployment_set %}
     	         {% for deployment in jurisdiction.deployment_set.all %}
-    	            $('#star-rating-{{ deployment.app.id }}').raty({
+    	            $('.star-rating-{{ deployment.app.id }}').raty({
                         path: "{{STATIC_URL}}/img/",
                         start: Math.floor(Math.random()*3) +2
                         });
@@ -141,13 +147,5 @@
              
     	});
     </script>
-<h1>hi</h1>
-<h1>{{ jurisdiction.name }}</h1>
-<p>{{ jurisdiction.description }}
-<h2>Applications deployed in {{jurisdiction.name}}</h2>
-{% for deployment in jurisdiction.deployment_set.all %}
-<ul>
-    <li><a href="/dep/{{deployment.id}}/">{{deployment.name}}</a></li>
-</ul>
-{% endfor %}
+
 {% endblock %}

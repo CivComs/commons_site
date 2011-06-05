@@ -28,10 +28,7 @@ h1 {
 
 #logo {
     margin: 0em 0em 0em 0em;
-    -webkit-margin-before: 0em;
--webkit-margin-after: 0em;
--webkit-margin-start: 0px;
--webkit-margin-end: 0px;
+   
 }
 #logo a {
     color:#403D3E;
@@ -52,8 +49,36 @@ h3 {
     margin: .2em .3em 1em 1.5em;
 }
 
+.title_image {
+    height: 4em;
+    width: 4em;
+    border: 1px dashed #aaa;
+    margin: 20px 10px 20px 20px;
+    float:left;
+
+}
+
+.title_info {
+    margin: 20px 0px 0px 0px;
+    
+}
+
+.about ul{
+    margin: 0px 0px 5px 0px;
+    vertical-align: top;
+
+}
+
+.title_info h1 {
+
+    vertical-align:top;
+    text-align:left;
+
+}
+
+
 #welcome_text {
-    margin-right: 4em;
+    margin: 0em 4em 0em 0em;
     font-size: 140%;
     text-align: left;
 
@@ -128,12 +153,7 @@ h2 a:visited {
 .nav-bar ul {
 
     padding 0;
-    -webkit-margin-before: 0em;
-    -webkit-margin-after: 0em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    -webkit-padding-start: 0px;
-    -webkit-padding-end: 0px;
+   
      margin: 0em auto;
      list-style-type: none;
     margin: 0px 0px 0px 0px;
@@ -470,7 +490,8 @@ h2 a:visited {
 .user-strip {
 /*    border: 1px solid black;   */
     margin-left: 3em;
-    height: 3em;
+
+    display:block;
 
 }
 .user-strip li {
@@ -500,12 +521,6 @@ letter-spacing:0;
 word-spacing:0;
 
 }
-
-
-
-
-
-
 
 
 
