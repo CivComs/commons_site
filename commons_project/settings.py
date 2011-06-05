@@ -140,7 +140,7 @@ LOGOUT_URL = '/users/signout/'
 USERENA_SIGNIN_REDIRECT_URL = '/users/%(username)s/'
 
 PRIVATEBETA_ALWAYS_ALLOW_VIEWS = ('userena.views.signin',)
-# PRIVATEBETA_ENABLE_BETA = False
+PRIVATEBETA_ENABLE_BETA = False
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
