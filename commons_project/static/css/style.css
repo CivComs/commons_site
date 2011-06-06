@@ -53,9 +53,9 @@ h3 {
 }
 
 .title_image {
-    height: 4em;
-    width: 4em;
-    border: 1px dashed #aaa;
+    height: 5em;
+    width: 5em;
+    border: 1px solid #aaa;
     margin: 20px 10px 20px 20px;
     float:left;
 
