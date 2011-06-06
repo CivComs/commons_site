@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import patterns, include, url
-
-# Uncomment the next two lines to enable the admin:
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 admin.autodiscover()
 
@@ -20,5 +20,5 @@ urlpatterns = patterns('',
     (r'^messages/', include('userena.contrib.umessages.urls')),
     (r'^invite/', include('privatebeta.urls')),
     #(r'^', include('filer.server.urls')),
-)
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
