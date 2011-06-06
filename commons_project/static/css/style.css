@@ -1,4 +1,7 @@
+html {
+    background-color: #fafafa;
 
+}
 
 body {
     margin: 0 auto;
@@ -18,8 +21,8 @@ header {
 }
 
 #content-wrapper{
-    border: 1px solid #aaa;
-
+    border: 1px solid #ddd;
+   background-color: #fff;
     margin: .2em 0em 0em 0em;
 
 }
@@ -186,11 +189,11 @@ h2 a:visited {
 .nav-bar {
     display: block;
     clear:both;
-    /*background-color: #eee;
-     border: 1px solid #444;*/
+    /*background-color: #eee;*/
+     border: 1px solid #ddd;
      line-height:3em; 
      margin-bottom: .4em;
-        background-color: #ddd;     
+        background-color: #fff;     
     
 
 }
@@ -198,7 +201,7 @@ h2 a:visited {
 .nav-bar ul li {
     display: inline-block;
     text-align:center;
-    background-color: #ddd;
+    background-color: #fff;
 }
 
 
@@ -233,7 +236,7 @@ h2 a:visited {
 }
 
 #bar-right:hover {
-    background-color:#ddd;
+    background-color:#fff;
 
 }
 
@@ -463,15 +466,16 @@ h2 a:visited {
 
 
 .category-strip {
-    border: 1px solid black;   
+    border: 1px solid #ddd;   
     margin: 0em 1em auto;
-    height: 95px;
+    height: 100px;
+    vertical-align: center;
 
 }
 .cat-strip-item {
     display: inline-block;
-    border: 1px solid black;  
-    width: 75px;
+
+    width: 83px;
     height: 92px;
     margin: 0em 0em 0em 2.24em;
     text-align: center;
@@ -480,9 +484,13 @@ h2 a:visited {
     display:block;
     width: 75px;
     height: 75px;
-    background-color:pink;
-    
 
+    margin: 0 auto;    
+    margin-top: 5px;
+}
+
+.cat-strip-item a {
+    margin: 0 auto;
 }
 
 .media-gallery-1col{
@@ -572,7 +580,7 @@ word-spacing:0;
     width:400px; /* Change this to your images width */
     height:300px; /* Change this to your images height */
     background:url(..img/loading.gif) no-repeat 50% 50%;
-    border: 1px solid #aaa;
+    border: 1px solid #ddd;
 }
 #slider img {
     position:absolute;
