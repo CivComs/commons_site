@@ -26,10 +26,10 @@
                         <div id="slider-wrapper">
         
                         <div id="slider" class="nivoSlider">
-                           <img src="{{ STATIC_URL }}/img/nivo/it_dashboard.png" alt="" title="Federal IT Dashboard enables smarter IT project management" /></a>
+                        
                              {% load thumbnail %}
-                               {% for img in app.screenshots.all|slice:":1" %}
-                            <img src="{% thumbnail img.image 250x250 %}" alt="" title="#eascaption"/>
+                               {% for img in app.screenshots.all %}
+                            <img src="{% thumbnail img.image 300x400 %}" alt="" title="#eascaption"/>
                              {% endfor %}
                              
                                {% comment %}
