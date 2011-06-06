@@ -10,7 +10,11 @@ Prerequisites
 Installation
 ------------
 
-Here is how to pull a local copy of the system::
+Here is how to pull a read-only local copy of the system::
+
+    git clone git://github.com/CivComs/commons_site.git
+
+If you have read-write access to this repository, you should use::
     
     git clone git@github.com:CivComs/commons_site.git
 
