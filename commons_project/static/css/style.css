@@ -572,6 +572,7 @@ word-spacing:0;
     width:400px; /* Change this to your images width */
     height:300px; /* Change this to your images height */
     background:url(..img/loading.gif) no-repeat 50% 50%;
+    border: 1px solid #aaa;
 }
 #slider img {
     position:absolute;
