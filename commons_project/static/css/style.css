@@ -1,3 +1,5 @@
+
+
 body {
     margin: 0 auto;
     width: 960px;
@@ -76,13 +78,34 @@ h3 {
 
 }
 
-
-#welcome_text {
-    margin: 0em 4em 0em 0em;
-    font-size: 140%;
-    text-align: left;
+.section-head {
+    margin: 2em 0em 0em 1.5em;
 
 }
+
+.welcome_head {
+    margin: 1.2em 0em .2em 0em;
+
+}
+
+.spotlight_head {
+    margin: 1.2em 0em .2em 2em;
+
+}
+
+#welcome_text {
+    margin: 0em 2em 0em 1em;
+    padding: 0em 0em 0em 0em;
+    
+
+}
+
+#welcome_text p {
+    font-size: 140%;
+    text-align: left;
+    padding: 0em 0em 0em 0em;
+}
+
 
 ul {
     
@@ -286,7 +309,7 @@ h2 a:visited {
 
 .sort-bar {
     height: 3em;
-    margin: 2em 4em 1em 0em;
+    margin: 2em 4em .4em 0em;
     background-color: #eee;
     padding: .2em 1em;
     
@@ -306,8 +329,8 @@ h2 a:visited {
 }
 
 .app-list {
-    margin: .2em .2em .1em .1em;
-    padding: .2em .2em .1em .1em;
+    margin: 0em .3em .1em .1em;
+    padding: 0em 0em .1em .1em;
 
 }
 .app-list img {
@@ -330,7 +353,7 @@ h2 a:visited {
     list-style:none;
 /*    height: 3em; */
    border-bottom: 1px solid #aaa;
-   margin: 0em 4em 0em 0em;
+   margin: 0em 0em 0em 0em;
     padding: .2em 0em .2em 0em;
 
 
@@ -368,7 +391,7 @@ h2 a:visited {
 
 .full-width {
   /*    border: 1px solid green; */
-    margin: 1em .2em; 4em 1em;
+    margin: 1em .2em 4em 1em;
     padding: .1em .2em .1em 1em;
 
 }
@@ -381,12 +404,12 @@ h2 a:visited {
 }
 
 .full-width ul {
-  margin:  0em 1em .5em 0em; 
+  margin:  0em 1em .5em 1em; 
 }
 .full-width ul li {
   padding .7em 2em;
   text-decoration: none;
-  margin: .6em 0em 0em 1em;
+  margin: .6em 1em 0em 0em;
   vertical-align:top;
 }
 .full-width ul li a {
@@ -397,7 +420,7 @@ h2 a:visited {
 .left-col{
 
     margin: 0em 1em .5em 1em;
-   /* padding: .1em 1em .1em 1em; */
+   padding: 0em 1em 0em 2em; 
 }
 .left-col p{
    
@@ -408,7 +431,7 @@ h2 a:visited {
 .right-col{
 /*    border: 1px solid brown; */
     margin: 0em 1em .5em 1em;
-    /*padding: .1em 1em .1em 1em;*/
+    padding:  0em 1em 0em 2em;
     
 }
 .right-col h2 {
@@ -425,6 +448,16 @@ h2 a:visited {
     margin: 0em 1em 0em 1em;
 
 }
+
+.recent_activity {
+    margin-top: .3em;
+
+}
+
+.recent_activity h3{
+  font-size:120%;
+}
+
 
 .category-strip {
     border: 1px solid black;   
@@ -489,7 +522,7 @@ h2 a:visited {
 
 .user-strip {
 /*    border: 1px solid black;   */
-    margin-left: 3em;
+    margin-left: 1em;
 
     display:block;
 
