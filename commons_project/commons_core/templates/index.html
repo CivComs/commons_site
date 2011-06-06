@@ -17,33 +17,35 @@
             </div> <!-- end main title -->
 
 
-            <div class="yui3-g"><!-- grid for two top columns headings -->
-                <div class="yui3-u-1-2">
-                    <div class="yui3-g">
-                        <div class="yui3-u-1">
-                        <h2 class="spotlight_head">Spotlight</h2>
-                        </div>
-                    </div>
-                </div><!-- left col heading -->
-                <div class="yui3-u-1-2">
-                    <div class="yui3-u-1">
-                        <h2 class="welcome_head">Civic BoyHowdy!</h2>
-                    </div> 
-                </div><!-- right col heading -->
-            </div> <!-- end grid for twop two column headings  -->
-            <div class="yui3-g"><!-- grid for two top columns content -->
+             <!-- end grid for twop two column headings  -->
+            <div class="yui3-g two_col"><!-- grid for two top columns content -->
               <div class="yui3-u-1-2">
                 <div class="left-col yui3-g">
                     <div class="yui3-u-1">  
+                         <h2 class="section_head">Spotlight</h2>
+                        <div id="slider-wrapper">
+        
+                        <div id="slider" class="nivoSlider">
+                        
+                            <a href="apps/2">
+                                <img src="{{ STATIC_URL }}/img/nivo/it_dashboard.png" alt="" title="Federal IT Dashboard enables smarter IT project management" /></a>
+                            
+                            <a href="apps/1"><img src="{{ STATIC_URL }}/img/nivo/eas_a.jpg" alt="" title="#eascaption"/></a>
+                            <a href="apps/3"><img src="{{ STATIC_URL }}/img/nivo/fd_app_a.png" alt="" /></a>
 
-                      <div class="media-gallery-1col"></div>
-                      <p>this is explaining the app</p>
-                    </div>
+                        </div>
+                        <div id="eascaption" class="nivo-html-caption">
+                            <strong>The Enterprise Addressing System</strong> maps <em>street addresses</em> to city data <a href="apps/1">see more</a>.
+                        </div>
+        
+                    </div> 
+                    </div> <!-- featured content slider -->
                 </div>
             </div><!-- left col content -->
-              <div class="yui3-u-1-2">
+              <div class="yui3-u-1-2 two_col">
                  <div class="right-col yui3-g" id="welcome_text">
                    <div class="yui3-u-1">
+                     <h2 class="section_head">Civic BoyHowdy!</h2>
                     <p>The app catalog is the watering hole where those in the know share what's new with civic technology and the cities that rely on it. Go ahead and browse by <a href="">category</a>, or take a look at the <a href="">cities</a> to see a bird's eye view of who's using what, and what they're saying about it.</p>
                 </div>   
             </div>
@@ -61,7 +63,7 @@
             <div class="yui3-u-1 centered">
             <ul class="yui3-g category-strip">
              
-                <li class="yui3-u-1-6"><div class="cat-strip-item"><a href="/apps/"><img src="" />Health</a></div></li>
+                <li class="yui3-u-1-6"><div class="cat-strip-item"><a href="/apps/"><img src="{{ STATIC_URL }}/img/health.png" />Health</a></div></li>
                 <li class="yui3-u-1-6"><div class="cat-strip-item"><a href="/apps/"><img src="" />Transit</a></div></li>
                 <li class="yui3-u-1-6"><div class="cat-strip-item"><a href="/apps/"><img src="" />Governance</a></div></li>
                 <li class="yui3-u-1-6"><div class="cat-strip-item"><a href="/apps/"><img src="" />Geographic</a></div></li>
@@ -72,24 +74,12 @@
             </div>
             </div><!-- grid for category browser -->
 
-            <div class="yui3-g"><!-- grid for two top columns headings -->
-                <div class="yui3-u-1-2">
-                    <div class="yui3-g">
-                        <div class="yui3-u-1">
-                        <h2 class="section-head">New & Hot</h2>
-                        </div>
-                    </div>
-                </div><!-- left col heading -->
-                <div class="yui3-u-1-2">
-                    <div class="yui3-u-1">
-                        <h2 class="section-head">What's Happening</h2>
-                    </div> 
-                </div><!-- right col heading -->
-            </div> <!-- end grid for bottom two column headings  -->
-            <div class="yui3-g"><!-- grid for two top columns content -->
+         
+            <div class="yui3-g two_col"><!-- grid for two top columns content -->
                 <div class="yui3-u-1-2">
                     <div class="left-col yui3-g">
-                        <div class="yui3-u-1">                          
+                        <div class="yui3-u-1">   
+                         <h2 class="section-head">New & Hot</h2>
                             {% if latest_app_list %}
                                 <ul class="app-list">
                                     {% for app in latest_app_list %}
@@ -114,6 +104,7 @@
                 <div class="yui3-u-1-2">
                     <div class="right-col yui3-g">
                         <div class="yui3-u-1">
+                        <h2 class="section-head">What's Happening</h2>
                             <ul class="recent_activity">
                                 
                                 <li><h3>not much happening, apparently!</h3></li>
@@ -127,7 +118,14 @@
     <script type="text/javascript">
     	$(function() {
     	    
+    	    $('#slider').nivoSlider({
+    	            effect:'fade',
+    	            pauseTime:15000,
+    	            animSpeed:1000,
+    	            controlNav:false
     	    
+    	    
+    	    });
     	    
     	    {% if latest_app_list %}
     	         {% for app in latest_app_list %}

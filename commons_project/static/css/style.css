@@ -79,22 +79,22 @@ h3 {
 
 }
 
-.section-head {
+.dep_section_head {
     margin: 2em 0em 0em 1.5em;
 
 }
 
-.welcome_head {
+.dep_welcome_head {
     margin: 1.2em 0em .2em 0em;
 
 }
 
-.spotlight_head {
+.dep_spotlight_head {
     margin: 1.2em 0em .2em 2em;
 
 }
 
-#welcome_text {
+#dep_welcome_text {
     margin: 0em 2em 0em 1em;
     padding: 0em 0em 0em 0em;
     
@@ -435,8 +435,8 @@ h2 a:visited {
     padding:  0em 1em 0em 2em;
     
 }
-.right-col h2 {
-    margin-top: 0em;
+.two_col h2 {
+    margin: 1em 0em .2em 0em;
 
 }
 .right-col p {
@@ -465,21 +465,21 @@ h2 a:visited {
 .category-strip {
     border: 1px solid black;   
     margin: 0em 1em auto;
-    height: 75px;
+    height: 95px;
 
 }
 .cat-strip-item {
     display: inline-block;
     border: 1px solid black;  
-    width: 5.7em;
-    height: 4.6em;
+    width: 75px;
+    height: 92px;
     margin: 0em 0em 0em 2.24em;
     text-align: center;
 }
 .cat-strip-item img {
     display:block;
-    width: 5.7em;
-    height: 3.4em;
+    width: 75px;
+    height: 75px;
     background-color:pink;
     
 
@@ -567,5 +567,20 @@ word-spacing:0;
 
 }
 
-
+#slider {
+    position:relative;
+    width:400px; /* Change this to your images width */
+    height:300px; /* Change this to your images height */
+    background:url(..img/loading.gif) no-repeat 50% 50%;
+}
+#slider img {
+    position:absolute;
+    top:0px;
+    left:0px;
+    display:none;
+}
+#slider a {
+    border:0;
+    display:block;
+}
 
