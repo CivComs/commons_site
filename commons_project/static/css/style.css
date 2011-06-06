@@ -20,6 +20,11 @@ header {
 
 }
 
+strong {
+
+    font-weight:600;
+}
+
 #content-wrapper{
     border: 1px solid #ddd;
    background-color: #fff;
@@ -30,6 +35,7 @@ header {
 h1 {
     font-size: 180%;
     margin: .4em 0em 0em .5em;
+    font-weight:600;
 }
 
 #logo {
@@ -44,6 +50,7 @@ h2 {
     margin: .4em .3em .3em .8em;
     font-size: 140%;
     display: inline-block;
+    font-weight:600;
 
 }
 
@@ -105,7 +112,7 @@ h3 {
 }
 
 #welcome_text p {
-    font-size: 140%;
+    font-size: 120%;
     text-align: left;
     padding: 0em 0em 0em 0em;
 }
@@ -168,10 +175,19 @@ h2 a:visited {
 
 }
 
+#breadcrumbs {
+    margin-left:1em;
+}
+
 #share {
     float: right;
     
 }
+
+#share a {
+margin-right:1em;
+}
+
 
 .right {
     float: right;
@@ -466,7 +482,7 @@ h2 a:visited {
 
 
 .category-strip {
-    border: 1px solid #ddd;   
+/*    border: 1px solid #ddd;   */
     margin: 0em 1em auto;
     height: 100px;
     vertical-align: center;
@@ -570,9 +586,25 @@ word-spacing:0;
 
 .footer {
     margin: 0em 0em .2em 0em;
-    padding: .4em;
-    text-align: center;
+/*    padding: .4em; 
+    text-align: center;*/
 
+}
+
+.footer p {
+    margin: .2em 0em 1em 0em;
+
+}
+
+.footer img {
+    height: 70px;
+    float: left;
+
+}
+.collab img {
+    height: 50px;
+    display: inline-block;
+    margin-top: 10px;
 }
 
 #slider {

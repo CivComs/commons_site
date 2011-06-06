@@ -13,7 +13,11 @@
             </div>
         
             <div class="yui3-u-1">
-                <h1>Welcome</h1>
+             {% if user.is_authenticated %}
+                <h1>Welcome Back, {{ user.username }}</h1>
+            {% else %}   
+                <h1>Welcome to the Commons</h1>
+            {% endif %}
             </div> <!-- end main title -->
 
 
@@ -45,9 +49,11 @@
               <div class="yui3-u-1-2 two_col">
                  <div class="right-col yui3-g" id="welcome_text">
                    <div class="yui3-u-1">
-                     <h2 class="section_head">Civic Apps, Ahoy!</h2>
-                    <p>The app catalog is the watering hole where those in the know share what's new with civic technology and the cities that rely on it. Go ahead and browse by <a href="">category</a>, or take a look at the <a href="">cities</a> to see a bird's eye view of who's using what, and what they're saying about it.</p>
-                </div>   
+                     <h2 class="section_head">Sharing is good</h2>
+                    <p>The Commons Project is here! We're building a comprehensive catalog of civic technology, as well as the cities and people that rely on it. Go ahead and browse by <a href="apps">category</a>, or take a look at the <a href="j">cities</a> to see a bird's eye view of who's using what, and what they're saying about it. See something missing? Please do us a favor and add it. Have a product listed here deployed in your city? <strong>Add it.</strong> </p>
+                    <br/>
+                    <p>Together, we'll transform the technology that our country runs on.</p>
+                    </div>   
             </div>
         </div><!-- right col content -->
             </div> <!-- end grid for top two column contents -->
@@ -107,7 +113,7 @@
                         <h2 class="section-head">What's Happening</h2>
                             <ul class="recent_activity">
                                 
-                                <li><h3>not much happening, apparently!</h3></li>
+                                <li><h3>loading current activity...</h3></li>
                             </ul>
                         </div>   
                    </div>
