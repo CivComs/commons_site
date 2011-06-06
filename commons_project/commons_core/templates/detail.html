@@ -22,17 +22,30 @@
               <div class="yui3-u-1-2">
                 <div class="left-col yui3-g">
                     <div class="yui3-u-1">
-                        {% load thumbnail %}
-                        {% for img in app.screenshots.all|slice:":1" %}
-                        <div class="media-gallery-1col"><img src="{% thumbnail img.image 250x250 %}"/></div>
-                        {% endfor %}
-                      <!-- problem with this listing code below -->
-                      <ul class="screenshot-strip">
-                        {% for img in app.screenshots.all %}
+                    
+                        <div id="slider-wrapper">
+        
+                        <div id="slider" class="nivoSlider">
+                           <img src="{{ STATIC_URL }}/img/nivo/it_dashboard.png" alt="" title="Federal IT Dashboard enables smarter IT project management" /></a>
+                             {% load thumbnail %}
+                               {% for img in app.screenshots.all|slice:":1" %}
+                            <img src="{% thumbnail img.image 250x250 %}" alt="" title="#eascaption"/>
+                             {% endfor %}
+                             
+                               {% comment %}
+                             
+                             {% load thumbnail %}
+                             {% for img in app.screenshots.all %}
                          <li><img src="{% thumbnail img.image 50x50 %}"/></li>
                         {% endfor %}
-                      </ul>
-                    <!-- end of problem code -->
+                             {% endcomment %}
+                        </div>
+                        <!-- <div id="eascaption" class="nivo-html-caption">
+                            <strong>The Enterprise Addressing System</strong> maps <em>street addresses</em> to city data <a href="apps/1">see more</a>.
+                        </div> -->
+        
+                    </div> 
+                 
                     </div>
                 </div>
             </div><!-- left col content -->
@@ -148,7 +161,15 @@
     
     <script type="text/javascript">
     	$(function() {
+    	
+    	     $('#slider').nivoSlider({
+    	            effect:'fade',
+    	            pauseTime:15000,
+    	            animSpeed:1000,
+    	            controlNav:false
     	    
+    	    
+    	    });
     	    
     	    
     	    {% if latest_app_list %}
