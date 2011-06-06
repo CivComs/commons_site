@@ -13,8 +13,14 @@ def index(request):
 
 
 def appindex(request):
+    t = loader.get_template('categoryindex.html')
+    c = RequestContext(request, {
+    })
+    return HttpResponse(t.render(c))
+
+def catdetail(request, cat_id):
     app_list = App.objects.all
-    t = loader.get_template('appindex.html')
+    t = loader.get_template('category.html')
     c = RequestContext(request, {
         'app_list': app_list,
     })
@@ -36,7 +42,7 @@ def depdetail(request, dep_id):
 #def detail(request, app_id):
 #    return HttpResponse("You're looking at app %s." % app_id)
 
-def detail(request, app_id):
+def appdetail(request, app_id):
     n = App.objects.get(pk=app_id)
     q = request.GET.get('q', n.name)
     results = GoogleSearch.fetch(q)
