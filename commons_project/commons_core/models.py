@@ -31,6 +31,8 @@ class Dependency(models.Model):
 class Screenshot(models.Model):
     """ Screenshots associated with Apps """
     image = FilerImageField(null=True, blank=True)
+    """ def __unicode__(self):
+     return self.name"""
     
 class Feature(models.Model):
     """ Features associated with an App """
