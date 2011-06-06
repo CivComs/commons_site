@@ -2,9 +2,10 @@
 
 body {
     margin: 0 auto;
+    padding 0;
     width: 960px;
     font-family: helvetica, arial, sans-serif;
-
+   /* background: url(http://www.smileycat.com/miaow/archives/images/misc/layout_grid.gif) top left no-repeat; */
     padding: 0;
     color: #403D3E;
     }
@@ -391,7 +392,7 @@ h2 a:visited {
 
 .full-width {
   /*    border: 1px solid green; */
-    margin: 1em .2em 4em 1em;
+    margin: 1.2em .2em 1.2em 1em;
     padding: .1em .2em .1em 1em;
 
 }
@@ -419,18 +420,18 @@ h2 a:visited {
 
 .left-col{
 
-    margin: 0em 1em .5em 1em;
+    margin: 0em 1em .5em 3em;
    padding: 0em 1em 0em 2em; 
 }
 .left-col p{
    
-        font-size: 100%;
+    font-size: 100%;
     text-align: center;
 
 }
 .right-col{
-/*    border: 1px solid brown; */
-    margin: 0em 1em .5em 1em;
+
+    margin: 0em 3em .5em 1em;
     padding:  0em 1em 0em 2em;
     
 }
@@ -450,7 +451,9 @@ h2 a:visited {
 }
 
 .recent_activity {
-    margin-top: .3em;
+    margin: 0em .3em .1em .1em;
+    padding: 0em 0em .1em .1em;
+
 
 }
 
