@@ -22,16 +22,20 @@
                 <div class="left-col yui3-g">
                     <div class="yui3-u-1">  
 
-                      <div class="media-gallery-1col"></div>
-                      <p>this is explaining the app</p>
+                      <div class="media-gallery-1col">
+                         <img src="{{ STATIC_URL }}/img/nivo/it_dashboard.png" alt="" title="Federal IT Dashboard enables smarter IT project management" /></a>                        
+                      </div>
+                         <p><strong>The IT Dashboard</strong> allows <em>greater visibility</em> into IT projects <a href="apps/2">see more</a>.</p>                      
                     </div>
                 </div>
             </div><!-- left col content -->
               <div class="yui3-u-1-2">
                  <div class="right-col yui3-g">
                    <div class="yui3-u-1">
-                      <div class="media-gallery-1col"></div>
-                      <p>this is explaining the app</p>
+                      <div class="media-gallery-1col">
+                      <a href="apps/1"><img src="{{ STATIC_URL }}/img/nivo/eas_a.jpg" alt="" title="#eascaption"/></a>
+                      </div>
+                      <p><strong>The Enterprise Addressing System</strong> maps <em>street addresses</em> to city data <a href="apps/1">see more</a>.</p>
                 </div>   
             </div>
         </div><!-- right col content -->
@@ -60,7 +64,7 @@
                     </div>
                      <div class="yui3-u-1">                          
                            {% if app_list %}
-                                <ul class="app-list">
+                                <ul class="app-list" id="full_list_width">
                                      {% for app in app_list %}
                                         <li class="listed-app-name"><!--<img title="app-icon" src="{{ STATIC_URL }}/img/cog.png"/>-->
                                         <h3><a href="/apps/{{ app.id }}/">{{ app.name }}</a></h3>

@@ -177,6 +177,7 @@ h2 a:visited {
 
 #breadcrumbs {
     margin-left:1em;
+    display: none;
 }
 
 #share {
@@ -405,7 +406,6 @@ margin-right:1em;
     margin: 0em;
     
 }
-.listed-app-name {}
 
 .comments-link {
 
@@ -571,8 +571,12 @@ margin-right:1em;
 }
 
 .media-gallery-1col{
-    height: 200px;
-    background-color: pink;
+    height: 300px;
+    width: 400px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin: .3em 0em .3em 0em;
+
 
 }
 
