@@ -6,9 +6,11 @@
 {% block content %}
 
 <div class="yui3-g"><!-- grid for main content area -->
+
             <div class="yui3-u-1">
                     {% for profile in profile_list %}
-                    <div class="title_image">
+                    
+                    <div class="title_image" style="margin-top:10px; margin-bottom:20px;">
                     <a href="{% url userena_profile_detail profile.user.username %}">
                     <img src="{{ profile.get_mugshot_url }}"/>
                     </a>
@@ -19,15 +21,17 @@
                         <h1> <a href="{% url userena_profile_detail profile.user.username %}">{{ profile.user.username }}</a></h1>
 
                     </div>
-                    <div class="about">
+                    <div class="about" style="margin-bottom:30px;" >
                         <ul>
                             <li><strong>currently at: </strong> <a href="../j/1/">San Francisco</a></li>
                             <li><strong>as: </strong>Assistant Director of Operations Research </li>
                         </ul>
                     </div> <!-- end about -->
-                      {% endfor %}
+                    
+                      {% endfor %}                             
+ 
             </div> <!-- end title -->
-            
+  
 </div><!-- end main -->
 
 
