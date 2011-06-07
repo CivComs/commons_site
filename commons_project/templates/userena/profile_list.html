@@ -5,16 +5,30 @@
 
 {% block content %}
 
+<div class="yui3-g"><!-- grid for main content area -->
+            <div class="yui3-u-1-2">
+                    {% for profile in profile_list %}
+                    <div class="title_image">
+                    <a href="{% url userena_profile_detail profile.user.username %}">
+                    <img src="{{ profile.get_mugshot_url }}"/>
+                    </a>
+                    </div>
+                    
+                    <div class="title_info">
 
-<ul id="profile_list">
-  {% for profile in profile_list %}
-  <li>
-  <a href="{% url userena_profile_detail profile.user.username %}"><img src="{{ profile.get_mugshot_url }}" /></a>
-  <a href="{% url userena_profile_detail profile.user.username %}">{{ profile.user.username }}</a>
-  </li>
-  {% endfor %}
+                        <h1> <a href="{% url userena_profile_detail profile.user.username %}">{{ profile.user.username }}</a></h1>
 
-</ul>
+                    </div>
+                    <div class="about">
+                        <ul>
+                            <li><strong>currently at: </strong> <a href="../j/1/">San Francisco</a></li>
+                            <li><strong>as: </strong>Assistant Director of Operations Research </li>
+                        </ul>
+                    </div> <!-- end about -->
+            </div> <!-- end title -->
+              {% endfor %}
+</div><!-- end main -->
+
 
 {% if is_paginated %}
 <div class="pagination">

@@ -479,11 +479,22 @@ margin-right:1em;
 .recent_activity h3{
   font-size:120%;
 }
+.subcats {
 
+ border: 1px solid #ddd;
 
+}
+.selected_cats{
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;    
+    border-bottom: 1px solid white;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+}
 .category-strip {
 /*    border: 1px solid #ddd;   */
-    margin: 0em 1em auto;
+    padding: 0em 1em auto;
     height: 100px;
     vertical-align: center;
 
@@ -492,7 +503,7 @@ margin-right:1em;
     display: inline-block;
 
     width: 83px;
-    height: 92px;
+    height: 99px;
     margin: 0em 0em 0em 2.24em;
     text-align: center;
 }
