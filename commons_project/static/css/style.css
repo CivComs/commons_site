@@ -62,11 +62,16 @@ h3 {
     margin: .2em .3em 1em 1.5em;
 }
 
+.profile {
+    min-height: 60px;
+    display: block;
+}
+
 .title_image {
     height: 5em;
     width: 5em;
     border: 1px solid #aaa;
-    margin: 20px 10px 20px 20px;
+    margin: 0 10px 20px 20px;
     float:left;
     clear: both;
 
@@ -85,8 +90,10 @@ h3 {
 
 .title_info h1 {
 
-    vertical-align:top;
-    text-align:left;
+    /* vertical-align:top; */
+    /* text-align:left; */
+    margin-left: 110px;
+    display: block;
 
 }
 

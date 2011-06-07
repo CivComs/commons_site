@@ -8,29 +8,24 @@
 <div class="yui3-g"><!-- grid for main content area -->
 
             <div class="yui3-u-1">
-                    {% for profile in profile_list %}
-                    
-                    <div class="title_image" style="margin-top:10px; margin-bottom:20px;">
-                    <a href="{% url userena_profile_detail profile.user.username %}">
-                    <img src="{{ profile.get_mugshot_url }}"/>
-                    </a>
-                    </div>
-                    
+                {% for profile in profile_list %}
+                <div class="profile">
+                    <div class="title_image">
+                        <a href="{% url userena_profile_detail profile.user.username %}">
+                        <img src="{{ profile.get_mugshot_url }}"/></a>
+                    </div> <!-- end avatar -->
                     <div class="title_info">
-
-                        <h1> <a href="{% url userena_profile_detail profile.user.username %}">{{ profile.user.username }}</a></h1>
-
-                    </div>
+                        <h1><a href="{% url userena_profile_detail profile.user.username %}">{{ profile.user.username }}</a></h1>
+                    </div> <!-- end name -->
                     <div class="about" style="margin-bottom:30px;" >
                         <ul>
                             <li><strong>currently at: </strong> <a href="../j/1/">San Francisco</a></li>
                             <li><strong>as: </strong>Assistant Director of Operations Research </li>
                         </ul>
                     </div> <!-- end about -->
-                    
-                      {% endfor %}                             
- 
-            </div> <!-- end title -->
+                </div> <!-- end profile -->
+                {% endfor %}
+            </div><!-- end profile list -->
   
 </div><!-- end main -->
 
