@@ -30,13 +30,17 @@ class Dependency(models.Model):
     
 class Screenshot(models.Model):
     """ Screenshots associated with Apps """
+    name = models.TextField()
     image = FilerImageField(null=True, blank=True)
-    """ def __unicode__(self):
-     return self.name"""
+    def __unicode__(self):
+        return self.name
     
 class Feature(models.Model):
     """ Features associated with an App """
+    name = models.TextField()
     feature = models.CharField(max_length=500)
+    def __unicode__(self):
+        return self.name
 
 class Jurisdiction(models.Model):
     """A jurisdiction, such as a city, county, state, or 
