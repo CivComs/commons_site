@@ -68,6 +68,7 @@ h3 {
     border: 1px solid #aaa;
     margin: 20px 10px 20px 20px;
     float:left;
+    clear: both;
 
 }
 
