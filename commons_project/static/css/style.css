@@ -530,10 +530,15 @@ margin-right:1em;
 }
 
 .subcats {
-
- border: 1px solid #ddd;
+    margin: 1em 4em 4em 3em;
+ border: 1px solid #ddd; 
 
 }
+.subcats p {
+    margin: .2em 3em 6em 2em;
+    font-size:120%;
+}
+
 .selected_cats{
     border-top: 1px solid #ddd;
     border-right: 1px solid #ddd;
