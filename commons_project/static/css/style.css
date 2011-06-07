@@ -256,9 +256,23 @@ margin-right:1em;
 
 }
 
+.input_field {
+    color:#403D3E;
+    width:300px;
+     outline:none;
+    resize:none;
+	height:1.2em;
+	padding: 10px 15px 5px 10px;
+	 -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+
+
+}
+
 #search-field {
 
-    color:#000;
+    color:#403D3E;
     width:300px;
      outline:none;
     resize:none;
@@ -479,6 +493,42 @@ margin-right:1em;
 .recent_activity h3{
   font-size:120%;
 }
+
+.map_form {
+    font-size:120%;
+    padding:1em;
+    
+}
+
+.map_form span {
+    margin: 0em .4em;
+    font-size:140%;
+
+}
+
+
+.map {
+    margin-bottom: 3em;
+}
+
+.map img {
+    width: 100%
+}
+
+.map_list {
+    margin: 2em .3em 0em 2em;
+    border: 1px solid #ddd;
+    padding: .3em;
+    overflow: auto;
+    height: 23em;
+
+}
+
+.map_list li {
+    border-bottom: 1px solid #ddd;
+    padding: .5em;
+}
+
 .subcats {
 
  border: 1px solid #ddd;
