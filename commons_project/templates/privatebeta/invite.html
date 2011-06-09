@@ -1,10 +1,30 @@
 {% extends 'simple.html' %}
 
 {% block content %}
-<h3><a href="/users/signin">Sign In</a>, Or enter your email address and we'll send you an invite soon</h3>
-<form action="{% url privatebeta_invite %}" method="post">
-{{ form }}
-{% csrf_token %}
-<input type="submit" value="Submit" />
-</form>
+<div id="top-alert" style="display: block;">
+    <h2>Civic Commons is currently in private beta.</h2>
+</div>
+<div class="yui3-g two_col" id="beta-invite-content">
+    <div class="yui3-u-1-2">
+    <div class="left-col yui3-g">
+    <div class="yui3-u-1">
+    <br/>
+    <a class="button" id="link-button" href="/users/signin">Sign In</a>
+    </div>
+    </div>
+    </div>
+    
+    <div class="yui3-u-1-2 two-col">
+    <div class="right-col yui3-g">
+    <div class="yui3-u-1">
+    <p>Or enter your email address and we'll send you an invite soon:</p>
+    <form action="{% url privatebeta_invite %}" method="post">
+    {{ form }}
+    {% csrf_token %}
+    <input type="submit" class="button" value="Submit" />
+    </form>
+    </div>
+    </div>
+    </div>
+</div>
 {% endblock %}
