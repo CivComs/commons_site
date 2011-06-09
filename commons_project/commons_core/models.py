@@ -121,8 +121,11 @@ class DependencyType(models.Model):
 
 # The custom Civic Commons Profile object we are using for this site
 class CCProfile(UserenaBaseProfile):
-    """Doesn't do anything just yet"""
-    pass
+    bio = models.TextField(max_length=500, default='')
+    location = models.CharField(max_length=30, blank=True, null=True)
+    affiliation = models.ForeignKey('Jurisdiction', blank=True, null=True)
+    title = models.CharField(max_length=30, blank=True, null=True)
+    
 
 # TODO: need to find out how SS is currently storing "used_by" data when it
 # comes time to write the API for inserting data into ShortStack. Currently
