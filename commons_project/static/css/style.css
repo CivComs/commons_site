@@ -664,10 +664,13 @@ word-spacing:0;
 /* private beta invite signup page styling */    
     
 #beta-invite-content {
+    /* since apparently boxes don't have padding by default, and the button definitely needs it */
     margin: 10px 0 20px 0;
     }
     
 #link-button {
+    /* works on top of .button */
+    /* creates a similarly curved button, only larger and in the colors of a link (blue, then dark red on rollover */
     background-color: #3366aa;
     color: white;
     font-size: 1.5em;
@@ -679,12 +682,12 @@ word-spacing:0;
 #link-button:hover { 
     background-color:#9E0B30; cursor:pointer; 
     }
-
 #link-button:active { 
     background-color:#9E0B30; cursor:pointer;
     }
     
 #id_email {
+    /* this is such a hack, but I couldn't figure out how to give generated forms more general classes */
     margin-left: 7px;
     color:#403D3E;
     width:250px;
