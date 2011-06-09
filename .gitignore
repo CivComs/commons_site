@@ -1,6 +1,7 @@
 *.py[co]
 *.swp # vim keeps a temporary file open when editing
-*.py~ #
+*.py~ i#
+*.tar.gz # Ignore gzipped tarballs.
 # Packages
 *.egg
 *.egg-info
