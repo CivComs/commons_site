@@ -27,8 +27,11 @@
                     </div>
                     <div class="about">
                         <ul>
-                            <li><strong>currently at: </strong> <a href="../j/1/">San Francisco</a></li>
-                            <li><strong>as: </strong>Assistant Director of Operations Research </li>
+                            {% if profile.location %} <li><strong>located in: </strong> {{ profile.location }}</li> {% endif %}
+                            {% if profile.affiliation %} <li><strong>currently at: </strong> <a href="../j/1/">{{ profile.affiliation }}</a></li> {% endif %}
+                            {% if profile.title %} <li><strong>role: </strong>{{ profile.title }}</li> {% endif %}
+                            <li><strong>bio:</strong>
+                            <p>{{ profile.bio }}</p></li>
                         </ul>
                     </div> <!-- end about -->
             </div> <!-- end main title -->
