@@ -1,5 +1,6 @@
 *.py[co]
 *.swp # vim keeps a temporary file open when editing
+*.py~ #
 # Packages
 *.egg
 *.egg-info
