@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Enter a new Deployment for {{ app.name}}{% endblock %}
+
+{% block content %}
+    <h1>Add a New Deployment for {{app.name}}:</h1>
+    <h3>Name of this deployment: <input type="text" size="100"/></h3>
+    <h3>Description: <textarea rows="3" cols="40"></textarea></h3>
+    <input type="hidden" name="app_id" value="{{app.id}}"/></h2>
+    <h3>It was deployed in:
+    <select>
+        {% for jur in jurlist.all %}
+        <option value="{{ jur.id }}">{{jur.name}}</option>
+        {% endfor %}
+    </select>
+    </h3>
+    </ul>
+    
+{% endblock %}

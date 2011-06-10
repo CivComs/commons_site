@@ -38,7 +38,11 @@ def depdetail(request, dep_id):
     n = Deployment.objects.get(pk=dep_id)
     return render_to_response("depdetail.html", {'dep':n }, context_instance=RequestContext(request))
    
-
+def depadd(request, app_id):
+    # Don't want to create new instance of deployment yet, just pass in app data for new dep to template
+    n = App.objects.get(pk=app_id)
+    jurlist = Jurisdiction.objects.all()
+    return render_to_response("depadd.html", {'app':n, 'jurlist':jurlist}, context_instance=RequestContext(request))
 #def detail(request, app_id):
 #    return HttpResponse("You're looking at app %s." % app_id)
 
