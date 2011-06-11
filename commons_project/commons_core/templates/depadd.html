@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% block mohead %}
+
+{% endblock %}
 {% block title %}Enter a new Deployment for {{ app.name}}{% endblock %}
 
 {% block content %}
@@ -6,13 +9,34 @@
     <h3>Name of this deployment: <input type="text" size="100"/></h3>
     <h3>Description: <textarea rows="3" cols="40"></textarea></h3>
     <input type="hidden" name="app_id" value="{{app.id}}"/></h2>
-    <h3>It was deployed in:
-    <select>
-        {% for jur in jurlist.all %}
-        <option value="{{ jur.id }}">{{jur.name}}</option>
-        {% endfor %}
-    </select>
-    </h3>
-    </ul>
-    
+    <h3>It was deployed in:</h3>
+        <div>
+        <select id="jurselect" name="jx">
+            <option value=""></option>
+            <option value="-1">Add a new jurisdiction</option>
+            {% for jur in jurlist.all %}
+            <option value="{{ jur.id }}">{{jur.name}}</option>
+            {% endfor %}
+        </select>
+        </div>
+<script type="text/javascript">
+<!-- 
+var selectmenu = document.getElementById("jurselect");
+selectmenu.onchange=function() {
+    var chosenoption=this.options[this.selectedIndex] //this refers to "selectmenu"
+    if (chosenoption.value=="-1"){
+        var nujx=prompt("Please enter a new JX","");
+        AddSelectOption(this, nujx, nujx, true);
+    }
+}
+function AddSelectOption(selectObj, text, value, isSelected) 
+{
+    if (selectObj != null && selectObj.options != null)
+    {
+        selectObj.options[selectObj.options.length] = 
+            new Option(text, value, false, isSelected);
+    }
+}
+-->
+</script>
 {% endblock %}
