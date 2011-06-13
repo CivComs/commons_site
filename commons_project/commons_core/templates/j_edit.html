@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{%block title%}Jurisdiction{%endblock%}
+
+{% block content %}
+         
+<div class="yui3-g"><!-- grid for main content area --> 
+        
+            <div class="yui3-u-1-2" style="background-color: #FF6;">
+                    <div class="title_image"><img src="#"/></div>
+                    <div class="title_info">
+                        <h1>{{ jurisdiction.name }}</h1>
+                    </div>
+                    
+			</div> <!-- end main title -->
+			<div class="yui3-u-1">
+			<form action="" enctype="multipart/form-data" method="post">
+				{% csrf_token %}
+				<fieldset>
+				{{ form.as_p }}
+				</fieldset>
+				<input type="submit" value="Save" name="save" />
+		</form></div>
+
+</div> <!-- end main content area -->
+
+{% endblock %}

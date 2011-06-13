@@ -1,7 +1,9 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
 from django.template import Context, RequestContext, loader
+from django.core.urlresolvers import reverse
 from commons_core.models import *
+from forms import EditJurisdictionForm
 
 def index(request):
     latest_app_list = App.objects.all
@@ -64,4 +66,19 @@ def j_detail(request, j_id):
     j = Jurisdiction.objects.get(pk=j_id)
     return render_to_response("j_detail.html",
                               {'jurisdiction':j,},
+                              context_instance=RequestContext(request))
+
+def j_edit(request, j_id):
+    """Form to edit the Jurisdiction"""
+    j = Jurisdiction.objects.get(pk=j_id)
+    form = EditJurisdictionForm(instance=j)
+    if request.method == 'POST':
+        form = EditJurisdictionForm(request.POST, instance=j)
+        if form.is_valid():
+            j = form.save()
+            redirect_to = reverse('jurisdiction_edit', kwargs={'j_id': j_id})
+            return redirect(redirect_to)
+    return render_to_response("j_edit.html",
+                              {'jurisdiction': j,
+							   'form': form,},
                               context_instance=RequestContext(request))

@@ -15,3 +15,5 @@ django-disqus==0.4.1
 -e git://github.com/CivComs/django-filer.git#egg=django-filer
 # There doesn't seem to be a package on PyPI:
 -e git://github.com/pragmaticbadger/django-privatebeta.git#egg=django-privatebeta
+django-dajaxice
+django-dajax
