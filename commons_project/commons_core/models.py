@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm
 import django_pipes
 from filer.fields.image import FilerImageField
 from userena.models import UserenaBaseProfile
@@ -63,6 +64,11 @@ class Deployment(models.Model):
 
     def __unicode__(self):
         return self.name
+        
+class DeploymentForm(ModelForm):
+    class Meta:
+        model = Deployment
+        fields = ('name', 'description', 'jurisdiction')
     
 class SSOrganization(models.Model):
     """An organization in Shortstack."""

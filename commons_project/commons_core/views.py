@@ -4,6 +4,7 @@ from django.template import Context, RequestContext, loader
 from django.core.urlresolvers import reverse
 from commons_core.models import *
 from forms import EditJurisdictionForm
+from django.forms import ModelForm
 
 def index(request):
     latest_app_list = App.objects.all
@@ -41,10 +42,23 @@ def depdetail(request, dep_id):
     return render_to_response("depdetail.html", {'dep':n }, context_instance=RequestContext(request))
    
 def depadd(request, app_id):
-    # Don't want to create new instance of deployment yet, just pass in app data for new dep to template
-    n = App.objects.get(pk=app_id)
-    jurlist = Jurisdiction.objects.all()
-    return render_to_response("depadd.html", {'app':n, 'jurlist':jurlist}, context_instance=RequestContext(request))
+    if request.method == 'POST':
+        form = DeploymentForm(request.POST)
+        if form.is_valid():
+            deployment = form.save()
+        return redirect('depdetail',dep_id=deployment.pk)
+        #return redirect('dep/%s' %deployment.pk)
+    else:
+        n = App.objects.get(pk=app_id)
+        jurlist = Jurisdiction.objects.all()
+        form = DeploymentForm()
+        stuff = {
+            'app': n,
+            'jurisdiction_list': jurlist,
+            'form': form,
+            }
+        return render_to_response("depadd.html", stuff, context_instance=RequestContext(request))
+             
 #def detail(request, app_id):
 #    return HttpResponse("You're looking at app %s." % app_id)
 
