@@ -46,8 +46,8 @@ def depadd(request, app_id):
         form = DeploymentForm(request.POST)
         if form.is_valid():
             deployment = form.save()
-        return redirect('depdetail',dep_id=deployment.pk)
-        #return redirect('dep/%s' %deployment.pk)
+        redirect_to = reverse('deployment_detail', kwargs={'dep_id': deployment.pk})
+        return redirect(redirect_to)
     else:
         n = App.objects.get(pk=app_id)
         jurlist = Jurisdiction.objects.all()
@@ -58,7 +58,7 @@ def depadd(request, app_id):
             'form': form,
             }
         return render_to_response("depadd.html", stuff, context_instance=RequestContext(request))
-             
+        
 #def detail(request, app_id):
 #    return HttpResponse("You're looking at app %s." % app_id)
 
