@@ -2,10 +2,10 @@
 {% block mohead %}
 
 {% endblock %}
-{% block title %}Enter a new Deployment for {{ app.name}}{% endblock %}
+{% block title %}Edit {{ app.name}} Deployment{% endblock %}
 
 {% block content %}
-    <h1>Add a New Deployment for {{app.name}}:</h1>
+    <h1>Edit {{app.name}} Deployment:</h1>
     <form action="" method="post">
     {% csrf_token %}
     

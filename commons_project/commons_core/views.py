@@ -1,5 +1,5 @@
 from django.shortcuts import render_to_response, redirect, get_object_or_404
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.template import Context, RequestContext, loader
 from django.core.urlresolvers import reverse
 from commons_core.models import *
@@ -39,58 +39,55 @@ def depindex(request):
     return HttpResponse(t.render(c))
 
 def depdetail(request, dep_id):
-    n = Deployment.objects.get(pk=dep_id)
+    n = get_object_or_404(Deployment, pk=dep_id)
     return render_to_response("depdetail.html", {'dep':n }, context_instance=RequestContext(request))
    
-def depadd(request, app_id):
+def depedit(request, app_id=None, dep_id=None):
+    '''Handles both creating a new deployment and modifying an existing one.'''
     if request.method == 'POST':
-        form = DeploymentForm(request.POST)
-        if form.is_valid():
-            deployment = form.save()
-            deployment.app = App.objects.get(pk=app_id)
-            deployment.save()
+        deployment=None
+        if app_id:
+            # adding a new deployment
+            form = DeploymentForm(request.POST)
+            if form.is_valid():
+                deployment = form.save()
+                deployment.app = App.objects.get(pk=app_id)
+                deployment.save()
+        elif dep_id:
+            # editing an existing deployment
+            deployment = Deployment.objects.get(pk=dep_id)
+            #app = deployment.app
+            form = DeploymentForm(request.POST,instance=deployment)
+            if form.is_valid():
+                deployment = form.save()
+        else:
+            # should never go here
+            raise Http404
         redirect_to = reverse('deployment_detail', kwargs={'dep_id': deployment.pk})
         return redirect(redirect_to)
     else:
-        app = App.objects.get(pk=app_id)
+        app = None
+        form = None
+        if app_id:
+            # adding a new deployment
+            app = App.objects.get(pk=app_id)
+            form = DeploymentForm()
+        elif dep_id:
+            # editing an existing deployment
+            deployment = Deployment.objects.get(pk=dep_id)
+            app = deployment.app
+            form = DeploymentForm(instance=deployment)
+        else:
+            # should never go here
+            raise Http404
         jurlist = Jurisdiction.objects.all()
-        form = DeploymentForm()
         stuff = {
             'app': app,
             'jurisdiction_list': jurlist,
             'form': form,
             }
-        return render_to_response("depadd.html", stuff, context_instance=RequestContext(request))
+        return render_to_response("depedit.html", stuff, context_instance=RequestContext(request))
         
-def depedit(request, dep_id):
-    if request.method == 'POST':
-        # save deployment's app
-        deployment = Deployment.objects.get(pk=dep_id)
-        app = deployment.app
-        form = DeploymentForm(request.POST,instance=deployment)
-        if form.is_valid():
-            deployment = form.save()
-            # form doesn't include app, so app will get overwritten as blank.
-            # so we add it back here
-            deployment.app = app
-            deployment.save()
-        redirect_to = reverse('deployment_detail', kwargs={'dep_id': deployment.pk})
-        return redirect(redirect_to)
-    else:
-        jurlist = Jurisdiction.objects.all()
-        deployment = Deployment.objects.get(pk=dep_id)
-        app = deployment.app
-        form = DeploymentForm(instance=deployment)
-        stuff = {
-            'app': app,
-            'jurisdiction_list': jurlist,
-            'form': form,
-            }
-        return render_to_response("depadd.html", stuff, context_instance=RequestContext(request))
-        
-#def detail(request, app_id):
-#    return HttpResponse("You're looking at app %s." % app_id)
-
 def appdetail(request, app_id):
     n = App.objects.get(pk=app_id)
     q = request.GET.get('q', n.name)
