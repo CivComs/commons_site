@@ -46,6 +46,8 @@ def depadd(request, app_id):
         form = DeploymentForm(request.POST)
         if form.is_valid():
             deployment = form.save()
+        deployment.app = App.objects.get(pk=app_id)
+        deployment.save()
         redirect_to = reverse('deployment_detail', kwargs={'dep_id': deployment.pk})
         return redirect(redirect_to)
     else:
