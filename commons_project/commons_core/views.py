@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.template import Context, RequestContext, loader
 from django.core.urlresolvers import reverse
 from commons_core.models import *
-from forms import EditJurisdictionForm
+from forms import EditJurisdictionForm, EditApplicationForm
 
 def index(request):
     latest_app_list = App.objects.all
@@ -55,6 +55,20 @@ def appdetail(request, app_id):
     return render_to_response("detail.html", {'results':results,'app':n,},
                               context_instance=RequestContext(request))
 
+def app_edit(request, app_id):
+    """Form to edit an application"""
+    a = App.objects.get(pk=app_id)
+    form = EditApplicationForm(instance=a)
+    if request.method == 'POST':
+        form = EditApplicationForm(request.POST, instance=a)
+        if form.is_valid():
+            a = form.save()
+            redirect_to = reverse('app_edit', kwargs={'app_id': app_id})
+            return redirect(redirect_to)
+    return render_to_response("app_edit.html",
+                              {'app': a,
+							   'form': form,},
+                              context_instance=RequestContext(request))
 # Jurisdictions
 
 def j_index(request):

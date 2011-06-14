@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Detail of {{ app.name}}{% endblock %}
+
+{% block content %}
+    
+  <div class="yui3-g"><!-- grid for main content area -->
+            <div class="yui3-u-1">
+                <div id="top-alert">
+                    <h2>
+                    <a href="/">log-in</a> to get access to great case studies, vendors, experts and more!
+                    </h2>
+                </div>
+            </div>
+        
+            <div class="yui3-u-1">
+                <h1>{{ app.name }}</h1>
+            </div> <!-- end app name -->
+           
+            
+            <div class="yui3-g full-width"> <!-- grid for category head , may be uneeded -->
+            
+                <div class="yui3-u-1">
+	    		<form action="" enctype="multipart/form-data" method="post">
+    				{% csrf_token %}
+				    <fieldset>
+			    	{{ form.as_p }}
+			    	</fieldset>
+		    		<input type="submit" value="Save" name="save" />
+        		</form>
+    		    </div>
+            </div> <!-- end tech details  -->
+
+
+           
+    </div> <!-- end main content area -->
+    
+
+
+{% endblock %}
