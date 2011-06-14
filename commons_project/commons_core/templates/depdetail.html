@@ -2,6 +2,7 @@
 {% block title %}Detail of {{ dep.name}}{% endblock %}
 
 {% block content %}
+    <a href="/dep/{{dep.id}}/edit/">Edit</a>
     <h1>About the {{ dep.name }}:</h1>
     <h3>{{dep.description}}</h3>
     <h2>This deployment was of <a href="/apps/{{dep.app.id}}/">{{dep.app}} Application</a></h2>

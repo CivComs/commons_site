@@ -47,16 +47,42 @@ def depadd(request, app_id):
         form = DeploymentForm(request.POST)
         if form.is_valid():
             deployment = form.save()
-        deployment.app = App.objects.get(pk=app_id)
-        deployment.save()
+            deployment.app = App.objects.get(pk=app_id)
+            deployment.save()
         redirect_to = reverse('deployment_detail', kwargs={'dep_id': deployment.pk})
         return redirect(redirect_to)
     else:
-        n = App.objects.get(pk=app_id)
+        app = App.objects.get(pk=app_id)
         jurlist = Jurisdiction.objects.all()
         form = DeploymentForm()
         stuff = {
-            'app': n,
+            'app': app,
+            'jurisdiction_list': jurlist,
+            'form': form,
+            }
+        return render_to_response("depadd.html", stuff, context_instance=RequestContext(request))
+        
+def depedit(request, dep_id):
+    if request.method == 'POST':
+        # save deployment's app
+        deployment = Deployment.objects.get(pk=dep_id)
+        app = deployment.app
+        form = DeploymentForm(request.POST,instance=deployment)
+        if form.is_valid():
+            deployment = form.save()
+            # form doesn't include app, so app will get overwritten as blank.
+            # so we add it back here
+            deployment.app = app
+            deployment.save()
+        redirect_to = reverse('deployment_detail', kwargs={'dep_id': deployment.pk})
+        return redirect(redirect_to)
+    else:
+        jurlist = Jurisdiction.objects.all()
+        deployment = Deployment.objects.get(pk=dep_id)
+        app = deployment.app
+        form = DeploymentForm(instance=deployment)
+        stuff = {
+            'app': app,
             'jurisdiction_list': jurlist,
             'form': form,
             }
