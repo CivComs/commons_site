@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.template import Context, RequestContext, loader
 from django.core.urlresolvers import reverse
 from commons_core.models import *
+from django.contrib.auth.decorators import login_required
 from forms import EditJurisdictionForm, EditApplicationForm
 from django.forms import ModelForm
 
@@ -41,7 +42,8 @@ def depindex(request):
 def depdetail(request, dep_id):
     n = get_object_or_404(Deployment, pk=dep_id)
     return render_to_response("depdetail.html", {'dep':n }, context_instance=RequestContext(request))
-   
+
+@login_required
 def depedit(request, app_id=None, dep_id=None):
     '''Handles both creating a new deployment and modifying an existing one.'''
     if request.method == 'POST':
@@ -94,7 +96,7 @@ def appdetail(request, app_id):
     results = GoogleSearch.fetch(q)
     return render_to_response("detail.html", {'results':results,'app':n,},
                               context_instance=RequestContext(request))
-
+@login_required
 def app_edit(request, app_id):
     """Form to edit an application"""
     a = App.objects.get(pk=app_id)
@@ -121,7 +123,7 @@ def j_detail(request, j_id):
     return render_to_response("j_detail.html",
                               {'jurisdiction':j,},
                               context_instance=RequestContext(request))
-
+@login_required
 def j_edit(request, j_id):
     """Form to edit the Jurisdiction"""
     j = Jurisdiction.objects.get(pk=j_id)
