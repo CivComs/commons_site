@@ -6,19 +6,15 @@
 
 {% block content %}
     <h1>Add a New Deployment for {{app.name}}:</h1>
-    <h3>Name of this deployment: <input type="text" size="100"/></h3>
-    <h3>Description: <textarea rows="3" cols="40"></textarea></h3>
-    <input type="hidden" name="app_id" value="{{app.id}}"/></h2>
-    <h3>It was deployed in:</h3>
-        <div>
-        <select id="jurselect" name="jx">
-            <option value=""></option>
-            <option value="-1">Add a new jurisdiction</option>
-            {% for jur in jurlist.all %}
-            <option value="{{ jur.id }}">{{jur.name}}</option>
-            {% endfor %}
-        </select>
-        </div>
+    <form action="" method="post">
+    {% csrf_token %}
+    
+    {{ form }}
+    
+    <input type="hidden" name="app_id" value="{{app.id}}"/>
+    <input type="submit" value="Save"/>
+    </form>
+    
 <script type="text/javascript">
 <!-- 
 var selectmenu = document.getElementById("jurselect");
