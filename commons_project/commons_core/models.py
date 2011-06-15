@@ -10,7 +10,7 @@ from filer.fields.file import FilerFileField
 
 class App(models.Model):
     """Describes an application or product."""
-    name = models.TextField()
+    name = models.CharField(max_length=100)
     # Must use name of model instead of model itself since
     # SSProduct has not been defined yet.
     ssp = models.ForeignKey('SSProduct', blank=True, null=True)
@@ -31,14 +31,14 @@ class Dependency(models.Model):
     
 class Screenshot(models.Model):
     """ Screenshots associated with Apps """
-    name = models.TextField()
+    name = models.CharField(max_length=100)
     image = FilerImageField(null=True, blank=True)
     def __unicode__(self):
         return self.name
     
 class Feature(models.Model):
     """ Features associated with an App """
-    name = models.TextField()
+    name = models.CharField(max_length=100)
     feature = models.CharField(max_length=500)
     def __unicode__(self):
         return self.name
@@ -46,7 +46,7 @@ class Feature(models.Model):
 class Jurisdiction(models.Model):
     """A jurisdiction, such as a city, county, state, or 
     perhaps more specifically a department."""
-    name = models.TextField()
+    name = models.CharField(max_length=100)
     sso = models.ForeignKey('SSOrganization', blank=True, null=True)
     description = models.TextField()
     parent = models.ForeignKey('self', related_name='children', blank=True,
@@ -57,7 +57,7 @@ class Jurisdiction(models.Model):
 class Deployment(models.Model):
     """A deployment of an App at a Jurisdiction, for example 
     EAS at San Francisco."""
-    name = models.TextField()
+    name = models.CharField(max_length=100)
     description = models.TextField()
     jurisdiction = models.ForeignKey(Jurisdiction)
     app = models.ForeignKey(App)
@@ -73,7 +73,7 @@ class DeploymentForm(ModelForm):
 class SSOrganization(models.Model):
     """An organization in Shortstack."""
     ssid = models.IntegerField(primary_key=True)
-    name = models.TextField(default="")
+    name = models.CharField(max_length=100, default="")
     ORG_CHOICES = (
         ("4", "City"),
         ("5", "Department"),
@@ -107,7 +107,7 @@ class SSOrganization(models.Model):
 class SSProduct(models.Model):
     """A product in Shortstack."""
     ssid = models.IntegerField(primary_key=True)
-    name = models.TextField(default="")
+    name = models.CharField(max_length=100, default="")
 
 
 class SSBudget(models.Model):
