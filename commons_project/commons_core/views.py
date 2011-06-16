@@ -94,7 +94,7 @@ def appdetail(request, app_id):
     n = App.objects.get(pk=app_id)
     q = request.GET.get('q', n.name)
     results = GoogleSearch.fetch(q)
-    return render_to_response("detail.html", {'results':results,'app':n,},
+    return render_to_response("appdetail.html", {'results':results,'app':n,},
                               context_instance=RequestContext(request))
 @login_required
 def app_edit(request, app_id):

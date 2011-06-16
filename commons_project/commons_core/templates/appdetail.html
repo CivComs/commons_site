@@ -14,16 +14,16 @@
         
 			<div class="yui3-u-1">
 				<div class="edit"><a href="/apps/{{app.id}}/edit/"><img src="{{ STATIC_URL }}/img/application_edit.png"/>Edit</a></div>
-                <h1>{{ app.name }} <input class="button useit" type="submit" value="i use it"/></h1>
+                <h1 id="app-name">{{ app.name }} <input class="button useit" type="submit" value="i use it"/></h1>
 
             </div> <!-- end app name -->
-           <div class="yui3-u-1">
+           <div id="app-description" class="yui3-u-1">
                 <h3>{{app.description}}</h3>
             </div> <!-- end description -->
             <div class="yui3-g"><!-- grid for two top columns content -->
               <div class="yui3-u-1-2">
                 <div class="left-col yui3-g">
-                    <div class="yui3-u-1">
+                    <div id="screenshots" class="yui3-u-1">
                     
                         <div id="slider-wrapper">
         
@@ -46,7 +46,7 @@
                             <strong>The Enterprise Addressing System</strong> maps <em>street addresses</em> to city data <a href="apps/1">see more</a>.
                         </div> -->
         
-                    </div> 
+                        </div> 
                  
                     </div>
                 </div>
@@ -68,6 +68,33 @@
                     </div> <!-- right col content pt 1 -->
                  <div class="right-col yui3-g">
                    <div class="yui3-u-1">
+                    <h2 class="section head">Who is using the {{app.name}}?</h2>
+                        <div class="jurisdictions">
+                           <h3>Jurisdictions which have deployed:</h3>
+                            <ul>
+                                {% for dep in app.deployment_set.all %}
+                                <li><a href="/dep/{{dep.id}}">{{ dep.jurisdiction.name }}</a></li>
+                                {% endfor %}
+                                <li><a href="/dep/add/{{app.id}}"><img src="{{ STATIC_URL }}/img/add.png"/>add another</a></li>
+                            </ul>
+                        </div>
+                    
+                </div>
+                  
+            </div>
+             </div><!-- all right col content -->
+            </div> <!-- end grid for top two column contents -->
+            
+            
+            <div class="yui3-g full-width"> <!-- grid for category head , may be uneeded -->
+                <div class="yui3-u-1-2">
+                     <h2 class="section-head"><!-- <img src="{{ STATIC_URL }}/img/wrench_orange.png" alt="wrench" />-->Technical & Deployment Information</h2> 
+                      <p>no technical details available. <a href="#">add some</a></p>
+                </div>
+            </div> <!-- end tech details  -->
+
+            <div class="yui3-g full-width">
+                   <div class="yui3-u-1">
                     <h2 class="section head">What do you want to do?</h2>
                     <ul class="actions_features">
                         <li>
@@ -81,87 +108,57 @@
                         </li>
                     </ul>
                     
-                </div>   
+                </div> 
             </div>
-             </div><!-- all right col content -->
-            </div> <!-- end grid for top two column contents -->
-            
-            
-            <div class="yui3-g full-width"> <!-- grid for category head , may be uneeded -->
+            <div id="app-talk" class="yui3-g">
                 <div class="yui3-u-1-2">
-                     <h2 class="section-head"><!-- <img src="{{ STATIC_URL }}/img/wrench_orange.png" alt="wrench" />-->Technical & Deployment Information</h2> 
-                      <p>no technical details available. <a href="#">add some</a></p>
-                </div>
-            </div> <!-- end tech details  -->
-
-            <div class="yui3-g"><!-- grid for two top columns headings -->
-                <div class="yui3-u-1"> <h2 class="section-head">Who is using the {{app.name}}?</h2></div>
-                <div class="yui3-u-1-2">
-                    <div class="yui3-g">
-                        <div class="yui3-u-1 city-viewer">
-
-                        </div>
-                    </div>
-                </div><!-- left col heading -->
-                <div class="yui3-u-1-2">
-                    <div class="yui3-u-1">
-                       
-                    </div> 
-                </div><!-- right col heading -->
-            </div> <!-- end grid for bottom two column headings  -->
-            <div class="yui3-g"><!-- grid for bottom two columns content -->
-                <div class="yui3-u-1-2">
-                    <div class="left-col yui3-g">
-                        <div class="yui3-u-1 jurisdictions">
-                           <h3>Jurisdictions which have deployed:</h3>
-                            <ul>
-                                {% for dep in app.deployment_set.all %}
-                                <li><a href="/dep/{{dep.id}}">{{ dep.jurisdiction.name }}</a></li>
-                                {% endfor %}
-                                <li><a href="/dep/add/{{app.id}}"><img src="{{ STATIC_URL }}/img/add.png"/>add another</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div><!-- end left col content -->
-                <div class="yui3-u-1-2">
-                    <div class="right-col yui3-g">
-                        <div class="yui3-u-1">
-                             <h3 class="section-head">Contributors to the app</h3>
-                            <ul class="user-strip">
-                                <li></li>
-                                <li></li>
-                                <li class="added"><span><a href="">I helped</a></span></li>
-                                
-                            </ul>
-                            <h3 class="section-head">Users of the app</h3>
-                            <ul class="user-strip">
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li class="added"><span><a href="#">I use it</a></span></li>
-                            </ul>
-
-                        </div>   
-                   </div>
-                </div><!-- end right col content -->
-            </div> <!-- end grid for bottom two column contents new & hot and what's happening -->
-            <div class="yui3-g">
-                <div class="yui3-u-1 full-width">
+                 <div class="left-col yui3-g">
+                   <div class="yui3-u-1">
                   <h2> What are people saying about the {{ app.name }}:</h2>
                      <div class="disqus-div"> 
                       {% load disqus_tags %} 
                       {% disqus_show_comments %}
                       </div>
+                   </div>
                  </div>
-                    <div class="yui3-u-1 full-width">
-                    <h2>{{ app.name }}, in the News:</h2>
+                </div>
+                <div class="yui3-u-1-2">
+                   <div class="right-col yui3-g">
+                    <div class="yui3-u-1">
+                    <h2>{{ app.name }} in the news:</h2>
                    <ul>
                         {% for result in results %}
                     <li><img src="{{ STATIC_URL }}/img/newspaper.png"/><a href="{{ result.unescapedUrl }}" target="newpage">{{ result.title|safe }}</a></li>
                     {% endfor %}
-                 </ul>
-    </div>
-    </div> <!-- end disqus and news feed items -->        
+                   </ul>
+                   </div>
+                  </div>
+                </div>
+            </div> <!-- end disqus and news feed items -->   
+        <div id="app-people" class="yui3-g">
+            <div class="yui3-u-1 full-width">
+                <div id="app-users">
+                <h3 class="section-head">Users of the app</h3>
+                <ul class="user-strip">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li class="added"><span><a href="#">I use it</a></span></li>
+                </ul>
+                </div>
+                <div id="app-contributors">
+                <h3 class="section-head">Contributors to the app</h3>
+                <ul class="user-strip">
+                    <li></li>
+                    <li></li>
+                    <li class="added"><span><a href="">I helped</a></span></li>
+                    
+                </ul>
+                </div>
+
+             </div>   
+        </div>
+                </div><!-- end right col content -->     
     </div> <!-- end main content area -->
     
     <script type="text/javascript">
