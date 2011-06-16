@@ -14,7 +14,7 @@
         
 			<div class="yui3-u-1">
 				<div class="edit"><a href="/apps/{{app.id}}/edit/"><img src="{{ STATIC_URL }}/img/application_edit.png"/>Edit</a></div>
-                <h1 id="app-name">{{ app.name }} <input class="button useit" type="submit" value="i use it"/></h1>
+                <h1 id="app-name">{{ app.name }} <input class="button useit" type="submit" value="i use this"/></h1>
 
             </div> <!-- end app name -->
            <div id="app-description" class="yui3-u-1">
@@ -136,17 +136,22 @@
                 </div>
             </div> <!-- end disqus and news feed items -->   
         <div id="app-people" class="yui3-g">
-            <div class="yui3-u-1 full-width">
-                <div id="app-users">
+            <div class="yui3-u-1-2">
+                <div class="left-col yui3-g">
+                   <div class="yui3-u-1" id="app-users">
                 <h3 class="section-head">Users of the app</h3>
                 <ul class="user-strip">
                     <li></li>
                     <li></li>
                     <li></li>
-                    <li class="added"><span><a href="#">I use it</a></span></li>
+                    <li class="added"><span><a href="#">I use this</a></span></li>
                 </ul>
+                    </div>
                 </div>
-                <div id="app-contributors">
+            </div>
+            <div class="yui3-u-1-2">
+                <div class="left-col yui3-g">
+                <div class="yui3-u-1" id="app-contributors">
                 <h3 class="section-head">Contributors to the app</h3>
                 <ul class="user-strip">
                     <li></li>
@@ -155,7 +160,7 @@
                     
                 </ul>
                 </div>
-
+                </div>
              </div>   
         </div>
                 </div><!-- end right col content -->     
