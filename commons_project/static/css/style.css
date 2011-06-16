@@ -21,37 +21,25 @@ header {
 }
 
 strong {
-
     font-weight:600;
 }
 
-#content-wrapper{
-    border: 1px solid #ddd;
-   background-color: #fff;
-    margin: .2em 0em 0em 0em;
+a:link  {
+    color:#3366aa; 
+    text-decoration:none; 
+}
+a:visited           { color:#3366aa; text-decoration:none; }
+a:hover             { color:#9E0B30; text-decoration:none; }
+a:active            { color:#9E0B30; text-decoration:none; }
 
+h2 a:visited {
+    text-decoration: none;
 }
 
 h1 {
     font-size: 180%;
     margin: .4em 0em 0em .5em;
     font-weight:600;
-}
-
-.edit {
-    float: right;
-    clear: both;
-    margin-right: .4em;
-    font-size: 1.1em;
-}
-
-
-#logo {
-    margin: 0em 0em 0em 0em;
-   
-}
-#logo a {
-    color:#403D3E;
 }
 
 h2 {
@@ -68,6 +56,29 @@ h2 img {
 
 h3 {
     margin: .2em .3em 1em 1.5em;
+}
+
+#content-wrapper{
+    border: 1px solid #ddd;
+   background-color: #fff;
+    margin: .2em 0em 0em 0em;
+
+}
+
+.edit {
+    float: right;
+    clear: both;
+    margin-right: .4em;
+    font-size: 1.1em;
+}
+
+
+#logo {
+    margin: 0em 0em 0em 0em;
+   
+}
+#logo a {
+    color:#403D3E;
 }
 
 .profile {
@@ -161,20 +172,6 @@ ul li {}
 }
 .actions_features {
     margin: 0em 0em 1em 0em;
-}
-
-
-
-a:link  {
-    color:#3366aa; 
-    text-decoration:none; 
-}
-a:visited           { color:#3366aa; text-decoration:none; }
-a:hover             { color:#9E0B30; text-decoration:none; }
-a:active            { color:#9E0B30; text-decoration:none; }
-
-h2 a:visited {
-    text-decoration: none;
 }
 
 #user {
