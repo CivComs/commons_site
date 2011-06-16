@@ -38,6 +38,14 @@ h1 {
     font-weight:600;
 }
 
+.edit {
+    float: right;
+    clear: both;
+    margin-right: .4em;
+    font-size: 1.1em;
+}
+
+
 #logo {
     margin: 0em 0em 0em 0em;
    
@@ -293,11 +301,14 @@ margin-right:1em;
 	
 }
 
+
+
 .button {
    border-top: 1px solid #aaa;
    background: #777;
 /*   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7)); */
 /*   background: -moz-linear-gradient(top, #3e779d, #65a9d7); */
+   font-size: 1em;
    padding: .5em .5em;
    margin-top: -7px;
    -webkit-border-radius: 4px;
@@ -331,7 +342,10 @@ margin-right:1em;
    cursor:pointer;
    }
 
-
+.useit {
+    font-size: .3em;
+    padding: .3em .3em;
+}
 #top-alert {
     height:50px;
     margin: 0em;
@@ -629,7 +643,7 @@ margin-right:1em;
 .user-strip {
 /*    border: 1px solid black;   */
     margin-left: 1em;
-
+    height: 49px;
     display:block;
 
 }
@@ -640,13 +654,19 @@ margin-right:1em;
     height: 3em;
     margin: 0em .5em 0em 0em;
     text-align: center;
+    vertical-align: middle;
+    font-size: .7em;
+    padding: .2em .2em;
 }
 .user-strip-item img {
     display:block;
      width: 3em;
     height: 3em;
     background-color:pink;
-    
+}
+
+.added {
+    border 1px solid red;
 
 }
 

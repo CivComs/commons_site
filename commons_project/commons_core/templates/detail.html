@@ -13,8 +13,9 @@
             </div>
         
 			<div class="yui3-u-1">
-				<a href="/apps/{{app.id}}/edit/">Edit</a>
-                <h1>{{ app.name }}</h1>
+				<div class="edit"><a href="/apps/{{app.id}}/edit/"><img src="{{ STATIC_URL }}/img/application_edit.png"/>Edit</a></div>
+                <h1>{{ app.name }} <input class="button useit" type="submit" value="i use it"/></h1>
+
             </div> <!-- end app name -->
            <div class="yui3-u-1">
                 <h3>{{app.description}}</h3>
@@ -95,7 +96,7 @@
 
             <div class="yui3-g"><!-- grid for two top columns headings -->
                 <div class="yui3-u-1"> <h2 class="section-head">Who is using the {{app.name}}?</h2></div>
-                <div class="yui3-u-1-2"><a href="/dep/add/{{app.id}}">Add a Deployment!</a>
+                <div class="yui3-u-1-2">
                     <div class="yui3-g">
                         <div class="yui3-u-1 city-viewer">
 
@@ -117,6 +118,7 @@
                                 {% for dep in app.deployment_set.all %}
                                 <li><a href="/dep/{{dep.id}}">{{ dep.jurisdiction.name }}</a></li>
                                 {% endfor %}
+                                <li><a href="/dep/add/{{app.id}}"><img src="{{ STATIC_URL }}/img/add.png"/>add another</a></li>
                             </ul>
                         </div>
                     </div>
@@ -128,13 +130,15 @@
                             <ul class="user-strip">
                                 <li></li>
                                 <li></li>
+                                <li class="added"><span><a href="">I helped</a></span></li>
+                                
                             </ul>
                             <h3 class="section-head">Users of the app</h3>
                             <ul class="user-strip">
                                 <li></li>
                                 <li></li>
                                 <li></li>
-                            <p class="seemore"><a href="#">see more...</a></p>
+                                <li class="added"><span><a href="#">I use it</a></span></li>
                             </ul>
 
                         </div>   
@@ -154,8 +158,8 @@
                    <ul>
                         {% for result in results %}
                     <li><img src="{{ STATIC_URL }}/img/newspaper.png"/><a href="{{ result.unescapedUrl }}" target="newpage">{{ result.title|safe }}</a></li>
-        {% endfor %}
-    </ul>
+                    {% endfor %}
+                 </ul>
     </div>
     </div> <!-- end disqus and news feed items -->        
     </div> <!-- end main content area -->
