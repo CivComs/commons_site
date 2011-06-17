@@ -55,9 +55,9 @@
                 <div class="left-col yui3-g">
                     <div class="yui3-u-1">  
                         <ul class="app-list">
-                                    
+							{% for app in profile.usesapps.all %}
                                         <li class="listed-app-name"><!--<img title="app-icon" src="/static//img/cog.png"/>-->
-                                        <h3><a href="/apps/1/">Enterprise Addressing System</a></h3>
+										<h3><a href="/apps/{{ app.id }}/">{{ app.name }}</a></h3>
                                          
                                           
                                          <div class="star-ratings">
@@ -65,27 +65,7 @@
                                          </div>  
                                         <a href="/apps/1/comments"><img title="comments" src="/static//img/comments.png"><span class="comments-link">read comments</span></a>
                                         </li>
-                                    
-                                        <li class="listed-app-name"><!--<img title="app-icon" src="/static//img/cog.png"/>-->
-                                        <h3><a href="/apps/2/">IT Dashboard</a></h3>
-                                         
-                                          
-                                         <div class="star-ratings">
-                                             <div id="star-rating-2" style="width: 100px; cursor: pointer; "><img id="star-rating-2-1" src="/static//img/star-on.png" alt="1" title="bad" class="star-rating-2">&nbsp;<img id="star-rating-2-2" src="/static//img/star-on.png" alt="2" title="poor" class="star-rating-2">&nbsp;<img id="star-rating-2-3" src="/static//img/star-on.png" alt="3" title="regular" class="star-rating-2">&nbsp;<img id="star-rating-2-4" src="/static//img/star-on.png" alt="4" title="good" class="star-rating-2">&nbsp;<img id="star-rating-2-5" src="/static//img/star-off.png" alt="5" title="gorgeous" class="star-rating-2"><input id="star-rating-2-score" type="hidden" name="score" value="4"></div>
-                                         </div>  
-                                        <a href="/apps/2/comments"><img title="comments" src="/static//img/comments.png"><span class="comments-link">read comments</span></a>
-                                        </li>
-                                    
-                                        <li class="listed-app-name"><!--<img title="app-icon" src="/static//img/cog.png"/>-->
-                                        <h3><a href="/apps/3/">Fire Department App</a></h3>
-                                         
-                                          
-                                         <div class="star-ratings">
-                                             <div id="star-rating-3" style="width: 100px; cursor: pointer; "><img id="star-rating-3-1" src="/static//img/star-on.png" alt="1" title="bad" class="star-rating-3">&nbsp;<img id="star-rating-3-2" src="/static//img/star-on.png" alt="2" title="poor" class="star-rating-3">&nbsp;<img id="star-rating-3-3" src="/static//img/star-off.png" alt="3" title="regular" class="star-rating-3">&nbsp;<img id="star-rating-3-4" src="/static//img/star-off.png" alt="4" title="good" class="star-rating-3">&nbsp;<img id="star-rating-3-5" src="/static//img/star-off.png" alt="5" title="gorgeous" class="star-rating-3"><input id="star-rating-3-score" type="hidden" name="score" value="2"></div>
-                                         </div>  
-                                        <a href="/apps/3/comments"><img title="comments" src="/static//img/comments.png"><span class="comments-link">read comments</span></a>
-                                        </li>
-                                    
+                                    {% endfor %}                                  
                                 </ul>
                       <!--<div class="media-gallery-1col"></div>
                       <p>this is explaining the app</p> -->
@@ -96,9 +76,9 @@
                  <div class="right-col yui3-g">
                    <div class="yui3-u-1">
                             <ul class="app-list">
-                                    
+                                    {% for app in profile.contributestoapps.all %}
                                         <li class="listed-app-name"><!--<img title="app-icon" src="/static//img/cog.png"/>-->
-                                        <h3><a href="/apps/1/">Enterprise Addressing System</a></h3>
+										<h3><a href="/apps/{{ app.id }}/">{{ app.name }}</a></h3>
                                          
                                           
                                          <div class="star-ratings">
@@ -106,18 +86,7 @@
                                          </div>  
                                         <a href="/apps/1/comments"><img title="comments" src="/static//img/comments.png"><span class="comments-link">read comments</span></a>
                                         </li>
-                                    
-                                        
-                                    
-                                        <li class="listed-app-name"><!--<img title="app-icon" src="/static//img/cog.png"/>-->
-                                        <h3><a href="/apps/3/">Fire Department App</a></h3>
-                                         
-                                          
-                                         <div class="star-ratings">
-                                             <div id="star-rating-3" style="width: 100px; cursor: pointer; "><img id="star-rating-3-1" src="/static//img/star-on.png" alt="1" title="bad" class="star-rating-3">&nbsp;<img id="star-rating-3-2" src="/static//img/star-on.png" alt="2" title="poor" class="star-rating-3">&nbsp;<img id="star-rating-3-3" src="/static//img/star-off.png" alt="3" title="regular" class="star-rating-3">&nbsp;<img id="star-rating-3-4" src="/static//img/star-off.png" alt="4" title="good" class="star-rating-3">&nbsp;<img id="star-rating-3-5" src="/static//img/star-off.png" alt="5" title="gorgeous" class="star-rating-3"><input id="star-rating-3-score" type="hidden" name="score" value="2"></div>
-                                         </div>  
-                                        <a href="/apps/3/comments"><img title="comments" src="/static//img/comments.png"><span class="comments-link">read comments</span></a>
-                                        </li>
+                                    {% endfor %}
                                     
                                 </ul>
                     
